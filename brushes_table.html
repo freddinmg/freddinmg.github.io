@@ -34,11 +34,35 @@
     <script src="https://fred-site.neocities.org/Javascript/jQuery/moment/moment.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
 
     <link href="https://fred-site.neocities.org/Javascript/jQuery/Lightbox2/src/css/lightbox.css" rel="stylesheet" />
 
     <script>
-        $(document).ready(function () {
+    var tagRegex = new RegExp("\[(.*?) \]");
+var d = new Date();
+var todayMonth = d.getMonth();
+var todayDate = d.getDate();
+var todayYear = d.getYear();
+var todayISO = d.toISOString();
+//IMPORTING THE DATA TO THE TABLES WORKED! I did have to remove the empty cells from the end of the information array. There's some kind of problem with importrange.
+
+
+/*
+var taggedCol1;
+var taggedColDiv;
+var taggedCol1Html;
+var taggedColDivHtml;
+var newHtml1;
+var newHtml2;
+
+var split1;
+var split3;
+
+var taggedCol1Text;
+*/
+
+$(document).ready(function () {
     //FUNCTION
 
 
@@ -58,9 +82,6 @@
     let output3A;
     let object3B;
     let output4B;
-
-	var isVis9;
-	var isVis11;
 
     async function fetchDataSequentially() {
         try {
@@ -140,13 +161,12 @@
             $('#loading-text').delay(2000).fadeOut();
             $('#loading-holder').delay(2300).fadeOut();
 
-            var table = new DataTable("#myTable", {
+            new DataTable("#myTable", {
                 stateSave: true,
                 hover: true,
                 fixedColumns: {
                     start: 3,
                 },
-                responsive: true,
                 layout: {
                     topStart: {
                         buttons: [
@@ -191,10 +211,6 @@
                 scrollCollapse: true,
                 scrollX: true,
                 fixedHeader: true,
-                columnDefs: [
-                    { className: "dateCol1", targets: [9] },
-					{ className: "dateCol2", targets: [11] }
-                ],
                 columns: [
                     {
                         title: 'ID Number', data: "id", render: function (data) {
@@ -327,13 +343,18 @@
                 ],
                 data: output4B,
                 rowCallback: function (row, data) {
-
-					if (data.dateUploaded == "") { $("td.dateCol1", row).html("<div class='no-data'>No date recorded.</div>") };
+                    if (data.dateUploaded == "") { $("td:eq(9)", row).html("<div class='no-data'>No date recorded.</div>") };
                     if (data.dateUploaded != "" && data.dateEnd > todayISO) { $("td:eq(1)", row).find(".asset-span").addClass("dateSaleActive"); $("td:eq(2)", row).find(".author-span").addClass("dateSaleActive") } else { $("td:eq(1)", row).find(".asset-span").removeClass("dateSaleActive"); $("td:eq(2)", row).find(".author-span").removeClass("dateSaleActive") };
-					if (data.dateEnd == "") { $("td.dateCol2", row).html("<div class='no-data'>No date recorded.</div>") };
+                    if (data.dateEnd == "") { $("td:eq(11)", row).html("<div class='no-data'>No date recorded.</div>") };
 
                     //console.log(split1)
                     //console.log(split2)
+
+
+
+
+
+
 
                 },
 
@@ -342,8 +363,6 @@
         })
 
     //DEADASS, render wasn't working until I changed single quotes to double quotes and vice versa.
-
-
 
 
 });
@@ -377,16 +396,6 @@
         //if (text2.match(myRegex) != false) { text.wrapInner("<span class='tag'></span>") };
     </script>
 
-    <style>
-        table {
-            table-layout: fixed; 
-            width: 100%;
-        }
-
-        td, th {
-            border: 1px solid brown;
-        }
-    </style>
 </head>
 <body>
     <div id="json-table"></div>
