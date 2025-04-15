@@ -10,6 +10,12 @@ h1, h2, h3 {
     font-style: normal;
 }
 
+h1.fancy {
+    font-family: "Imperial Script", 'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .imperial-script-regular {
     font-family: "Imperial Script", 'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
     font-weight: 400;
