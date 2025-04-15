@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>JSON Testing 12-B: Accurate Value toLocaleString</title>
+
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/jquery-ui.css" />
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/jquery-ui.structure.css" />
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/jquery-ui.theme.css" />
+
+    <link href="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/cr-2.0.4/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.css" rel="stylesheet" integrity="sha384-qcdSMcD/Q3Uv2jt8kfS+QBTVIvA2K3xn6LkDIBi1ALtIOj+XbFtclwJjvy4M5gIt" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Fascinate&family=Honk&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Nabla:EDPT@111&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Silkscreen:wght@400;700&family=Syne+Mono&family=Unica+One&display=swap" rel="stylesheet">
+
+    <link href="base_table_stylesheet.css" rel="stylesheet" />
+    <link href="general_table_stylesheet.css" rel="stylesheet" />
+    <link href="orange_table.css" rel="stylesheet" />
+    <link href="jQuery Library/jquery-ui.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/themes/smoothness/jquery-ui.css">
+
+
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/Lightbox2/src/css/lightbox.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js" integrity="sha384-NvdL29zVAOFjWtEqg1ZI0MgNFOQu3Mi1LggvgNBgbohvoHiHMPH4ggGqdi+pxwBO" crossorigin="anonymous"></script>
+
+    <script src="https://fred-site.neocities.org/Javascript/jQuery/moment/moment.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+    <script src="jQuery Library/jquery-ui.js"></script>
+
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/Lightbox2/src/css/lightbox.css" rel="stylesheet" />
+
+    <script>
+        var tagRegex = new RegExp("\[(.*?) \]");
+        var d = new Date();
+        var todayMonth = d.getMonth();
+        var todayDate = d.getDate();
+        var todayYear = d.getYear();
+        var todayISO = d.toISOString();
+        var tableId = "myTable";
+        /*
+        var taggedCol1;
+        var taggedColDiv;
+        var taggedCol1Html;
+        var taggedColDivHtml;
+        var newHtml1;
+        var newHtml2;
+
+        var split1;
+        var split3;
+
+        var taggedCol1Text;
+        */
+
+        $(document).ready(function () {
+            //FUNCTION
+
+            //DEADASS, render wasn't working until I changed single quotes to double quotes and vice versa.
+            var columnDefs =
+                [
+                    {
+                        targets: 0,
+                        width: "15%"
+                    },
+                    {
+                        targets: 1,
+                        width: "15%"
+                    },
+                    {
+                        targets: 2,
+                        width: "15%"
+                    },
+                    {
+                        targets: 3,
+                        width: "15%"
+                    },
+                    {
+                        targets: 4,
+                        width: "15%"
+                    },
+                    {
+                        targets: 5,
+                        width: "15%"
+                    },
+                    {
+                        targets: 6,
+                        width: "15%"
+                    },
+                    {
+                        targets: 7,
+                        width: "15%"
+                    },
+                    {
+                        targets: 8,
+                        width: "15%"
+                    },
+                    {
+                        targets: 9,
+                        width: "15%"
+                    },
+                    {
+                        targets: 10,
+                        width: "15%"
+                    },
+                    {
+                        targets: 11,
+                        width: "15%"
+                    },
+                    {
+                        targets: 12,
+                        width: "15%"
+                    },
+                    {
+                        targets: 13,
+                        width: "15%"
+                    },
+                ];
+
+            new DataTable("#myTable", {
+                stateSave: true,
+                hover: true,
+                fixedColumns: {
+                    start: 2,
+                },
+                ordering: false,
+                autoWidth: false,
+                layout: {
+                    topStart: {
+                        buttons: [
+                            {
+                                extend: 'colvisGroup',
+                                text: 'Bare Info',
+                                show: [0, 1, 2, 3, 5],
+                                hide: [4, 6, 7, 8, 9, 10, 11, 12, 13]
+                            },
+                            {
+                                extend: 'colvisGroup',
+                                text: 'Bare Info & Thumbnails',
+                                show: [0, 1, 2, 3, 4, 5],
+                                hide: [6, 7, 8, 9, 10, 11, 12, 13]
+                            },
+                            {
+                                extend: 'colvisGroup',
+                                text: 'Hide Images',
+                                show: [0, 1, 2, 3, 5, 6, 7, 8, 9, 10, 11, 12, 13],
+                                hide: [4]
+                            },
+                            {
+                                extend: 'colvisGroup',
+                                text: 'No Tags',
+                                show: [0, 1, 2, 4, 6, 7, 8, 9, 10, 11, 12],
+                                hide: [3, 5, 13]
+                            },
+                            {
+                                extend: 'colvisGroup',
+                                text: 'Sale Periods',
+                                show: [0, 1, 2, 3, 4, 5, 6, 7, 11, 12, 13],
+                                hide: [8, 9, 10]
+                            },
+                            {
+                                extend: 'colvisGroup',
+                                text: 'Show all',
+                                show: ':hidden'
+                            }
+                        ]
+                    }
+                },
+                scrollCollapse: true,
+                scrollX: true,
+                fixedHeader: true,
+                columns: [
+                    {
+                        title: 'ID Number', data: "id", render: function (data) {
+                            return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                        }
+                    },
+                    { title: 'Asset Name', data: "name" },
+                    { title: 'Author', data: "author" },
+                    {
+                        title: 'Tags', data: "tags", render: function (data) {
+                            var taggedCol1Text = data;
+
+                            var split1 = taggedCol1Text.split('[');
+                            var split2 = split1.filter(function (e) {
+                                return e; // Returns only the truthy values
+                            });
+
+                            var split3 = split2.map(x => x.replace(']', ''));
+
+                            var listHTML = "<ul>";
+                            for (let i = 0; i < split3.length; i++) {
+                                listHTML += "<li>" + split3[i] + "</li>";
+                            }
+                            listHTML += "</ul>";
+
+                            return "<div class = 'tag-box'>" + listHTML + "</div>";
+                        }
+                    },
+                    {
+                        title: 'Image URL', data: "imgURL", render: function (data, JsonResultRow) {
+                            return "<a data-lightbox='gallery' href = '" + data + "'><img class='thumbnail' src='" + data + "'></a>";
+                        }
+                    },
+                    {
+                        title: 'Brush Category', data: "brushCategory", render: function (data) {
+                            var taggedCol1Text = data;
+
+                            var split1 = taggedCol1Text.split('[');
+                            var split2 = split1.filter(function (e) {
+                                return e; // Returns only the truthy values
+                            });
+
+                            var split3 = split2.map(x => x.replace(']', ''));
+
+                            var listHTML = "<ul>";
+                            for (let i = 0; i < split3.length; i++) {
+                                listHTML += "<li>" + split3[i] + "</li>";
+                            }
+                            listHTML += "</ul>";
+
+                            return "<div class = 'tag-box'>" + listHTML + "</div>";
+                        }
+                    },
+                    {
+                        title: 'Available for Free?', data: "availableFree", render: function (data) {
+                            if (data === true) { return "<span class='pop'> &#9989; </span>" }
+                            else { return "<span class='pop'> &#10060 </span>" };
+                        }
+                    },
+                    {
+                        title: 'Limited Time Free?', data: "limitedFree", render: function (data) {
+                            if (data === true) { return "<span class='pop'> &#9989; </span>" }
+                            else { return "<span class ='pop'> &#10060 </span>" };
+                        },
+                    },
+                    {
+                        title: 'Date Uploaded', data: "dateUploaded", render: DataTable.render.datetime('DD/MM/YYYY')
+                    },
+                    {
+                        title: 'Days Free', data: "daysFree", render: function (data) {
+                            if (data !== "") { return data }
+                            else { return "<span class='no-data'>No days recorded.</span>" };
+                        },
+                    },
+                    {
+                        title: 'Date Sale Ends', data: "dateEnd", render: DataTable.render.datetime('DD/MM/YYYY')
+                    },
+                    {
+                        //Couldn't figure out how to make the render function work for regular numbers, but! I got the actual value of the data to "represent" the locale string without just reading that as....well, a string.
+                        title: 'Gold Cost', data: "gold", render: function (data) {
+                            var value;
+                            if (data !== "") { value = Number(data) || 0; return value.toLocaleString('en-US') }
+                            else { return 0 };
+                        },
+                    },
+                    {
+                        //Couldn't figure out how to make the render function work for regular numbers, but! I got the actual value of the data to "represent" the locale string without just reading that as....well, a string.
+                        title: 'Clippy Cost', data: "clippy", render: function (data) {
+                            var value;
+                            if (data !== "") { value = Number(data) || 0; return value.toLocaleString('en-US') }
+                            else { return 0 };
+                        },
+                    },
+                    {
+                        title: 'Other Categories', data: "otherCategories", render: function (data) {
+                            var taggedCol1Text = data;
+
+                            var split1 = taggedCol1Text.split('[');
+                            var split2 = split1.filter(function (e) {
+                                return e; // Returns only the truthy values
+                            });
+
+                            var split3 = split2.map(x => x.replace(']', ''));
+
+                            var listHTML = "<ul>";
+                            for (let i = 0; i < split3.length; i++) {
+                                listHTML += "<li>" + split3[i] + "</li>";
+                            }
+                            listHTML += "</ul>";
+
+                            return "<div class = 'tag-box'>" + listHTML + "</div>";
+                        }
+                    }
+                ],
+                data: output4B,
+                rowCallback: function (row, data) {
+                    if (data.dateUploaded == "") { $("td:eq(8)", row).html("<div class='no-data'>No date recorded.</div>") };
+                    if (data.dateUploaded != "" && data.dateEnd > todayISO) { $("td:eq(1)", row).css("color", "red"); $("td:eq(2)", row).css("color", "red") } else { $("td:eq(1)", row).css("color", "black"); $("td:eq(2)", row).css("color", "black") };
+                    if (data.dateEnd == "") { $("td:eq(10)", row).html("<div class='no-data'>No date recorded.</div>") };
+                    //console.log(split1)
+                    //console.log(split2)
+
+
+
+
+
+
+
+                },
+
+
+            });
+
+
+
+            $('table th').resizable({
+                handles: 'e',
+
+                stop: function (e, ui) {
+                    $(this).width(ui.size.width);
+                }
+            });
+
+        });
+
+
+    </script>
+    <script>
+        function wrapTextWithSpan(element, regex, className) {
+            element.html(function (index, oldHTML) {
+                return oldHTML.replace(regex, function (matched) {
+                    return '<span class="' + className + '">' + matched + '</span>';
+                });
+            });
+        }
+
+        // Example usage:
+
+        var myRegex = /\[(.*?)\]/g;
+        var tagRowText = $("#myTable tr td:nth-child(5)").text();
+
+        var text = $("#myTable tr td:nth-child(4)");
+        var text2 = text.text();
+
+        var myClass1 = $("#tag-holder");
+        var myClass2 = 'tag';
+
+        //var text3 = "Does this work?";
+        $("#myTable tr td:nth-child(4)").first().wrapInner("<div id='tag-holder'></div>");
+
+        wrapTextWithSpan(myClass1, myRegex, myClass2);
+
+        //if (text2.match(myRegex) != false) { text.wrapInner("<span class='tag'></span>") };
+    </script>
+
+    <style>
+        table {
+            table-layout: fixed; 
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="json-table"></div>
+
+    <table id="myTable" class="display" width="100%"></table>
+
+</body>
+</html>
