@@ -64,3 +64,7 @@ ul.nav-2 li::marker {
 ul.nav a, ul.nav-2 a {
     color: mediumpurple;
 }
+
+h2 + .cut-off {
+    margin-top: -10px;
+}
