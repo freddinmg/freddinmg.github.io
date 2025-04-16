@@ -63,6 +63,10 @@ table.dataTable.display > tbody > tr a {
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3)
 }
 
+table.dataTable thead th {
+    text-align: center;
+}
+
 .dateNoSale {
     color: black;
 }

@@ -17,6 +17,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Fascinate&family=Honk&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Nabla:EDPT@111&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Silkscreen:wght@400;700&family=Syne+Mono&family=Unica+One&display=swap" rel="stylesheet">
 
+    <link href="navigation_style.css" rel="stylesheet" />
     <link href="base_table_stylesheet.css" rel="stylesheet" />
     <link href="general_table_stylesheet.css" rel="stylesheet" />
     <link href="orange_table.css" rel="stylesheet" />
@@ -72,7 +73,7 @@ $(document).ready(function () {
     var jsonInfo = "https://script.googleusercontent.com/macros/echo?user_content_key=u4PtuBmW3V7fjvO_8unqRT5uwTDfjUUyw-R1AyJ4NBZ7WQePFsVhLHgignFxONEopew31D9z13yoz48mjbQuyObV26gS0vF1m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGuDKaJ9DGzt9jnM5iNZx5rEdh3vBxuz_VYJ7Sc6w6Ohi7NJlN7E3ATRTYu90ueq3nZPS26R9taebn-bR8TOEf-ytJTJy1FNew&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
 
     //JSON Images is still linked to the sheet copy, replace soon.
-    var jsonImages = "https://script.googleusercontent.com/macros/echo?user_content_key=FXJDCmfG3yG71HkpBnIfJFr65t2757TwrWVnYz88Vtxhzp9nxPfHGBhCAAhKuRODpA976_I26qi2J-3_LEPtSdNWF6CR6D03m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCjSRaZ8mE7c0sBWe6R5aCOBbl5IF8cRIxRhM2rWrfi7IPG9NoAhHWYZBkio1TlqDYrf5fh4ASOdyMRWFz3EhDp0lZyfHJtu8g&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
+    var jsonImages = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjQ6KWhUG5CnrfNX_ywuyNTI5b1N0U_ajpJtrPP7uoQ9lY7D7D20r5zI-0uHhs-rgAEGBuj_mJsjC3nvRYav2eNdml85nb-YVC_CSCrQO7twrCwW9DtWwv2FRbYsBEHXEVhYuNdipS4jnmZmGYhYbT2yGToEU0YaT05iaTNOO2EWI-qNoSuwzLBIb4lvH7fL5OLACwKN4MhBB2AqE6d3MpKhd2d9kNTa6ngLMe4KFxYegKK30wIrYaZDzXlZI5AdGVUlprUuur9KDcLOLxje48-8rBVSA&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
 
     let infoResponse;
     let imgResponse;
@@ -396,6 +397,10 @@ $(document).ready(function () {
 
 </head>
 <body>
+    <ul class="nav-2">
+        <li><a href="changelog.html">Changelog</a></li>
+        <li><a href="index.html">Home</a></li>
+    </ul>
     <p>
         The sheet below works, for the most part; closing the "sales period" columns will mess up the last few columns when and if you turn them back on. In which case, you just need to press "Show All" and refresh the page. I believe the table should save your place when you refresh it. 
     </p>
