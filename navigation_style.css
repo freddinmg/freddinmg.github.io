@@ -47,6 +47,7 @@ ul.nav-2 {
 
 ul.nav-2 li {
     display: list-item;
+    list-style-position: inside;
     margin: 10px;
     padding-left: 10px;
     padding-right: 10px;
