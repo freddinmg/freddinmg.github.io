@@ -59,7 +59,8 @@ ul.nav-2 li::marker {
 }
 
 .nav-2 li:first-of-type::marker {
-    content: "";
+    content: "" !important;
+    display: none;
 }
 
 ul.nav a, ul.nav-2 a {
