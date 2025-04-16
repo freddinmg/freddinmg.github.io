@@ -71,6 +71,10 @@ table.dataTable thead th {
     color: black;
 }
 
+table.dataTable thead th {
+    text-align: center;
+}
+
 .dateSaleActive {
     color: red;
 }
