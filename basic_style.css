@@ -11,7 +11,7 @@ h1, h2, h3 {
 }
 
 h1.fancy {
-    font-family: "Imperial Script", 'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
+    font-family: 'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
     font-weight: 400;
     font-style: normal;
 }
@@ -23,7 +23,7 @@ h1.fancy {
 }
 
 title {
-    font-family: 'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
+    font-family: "Imperial Script",'Edwardian Script ITC', "Savoye LET Plain", "Brush Script MT", cursive;
     font-weight: 400;
     font-style: normal;
 }
