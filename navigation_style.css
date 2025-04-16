@@ -54,7 +54,7 @@ ul.nav-2 li {
     border-width: 0 2px;
 }
 
-.front-nav ul.nav-2 li {
+.front-nav .nav-2 li {
     list-style-position: outside;
 }
 
