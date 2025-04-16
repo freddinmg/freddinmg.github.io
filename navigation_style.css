@@ -65,6 +65,10 @@ ul.nav a, ul.nav-2 a {
     color: mediumpurple;
 }
 
+.front-nav .nav-2 li {
+    padding: 15px;
+}
+
 .front-nav {
     font-family: "Chelsea Market", "Bauhaus 93", "Futura","Arial Black", sans-serif;
     font-weight: 400;
@@ -73,5 +77,5 @@ ul.nav a, ul.nav-2 a {
 }
 
 h1 ~ .cut-off, h2 ~ .cut-off, h3 ~ .cut-off {
-    margin-top: -20px;
+    margin-top: -25px;
 }
