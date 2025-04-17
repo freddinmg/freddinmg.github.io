@@ -70,3 +70,14 @@ input {
 select option {
     font-size: 1em !important;
 }
+
+#contain-all {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.side {
+    width: 50%;
+}
