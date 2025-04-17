@@ -81,3 +81,7 @@ select option {
 .side {
     width: 50%;
 }
+
+iframe {
+    width: 100%
+}
