@@ -36,7 +36,7 @@ h1.fancy-title {
     font-style: normal;
 }
 
-input, textarea, fieldset, legend, datalist, output, option, optgroup {
+input, textarea, fieldset, legend, datalist, select, output, option, optgroup {
     font-family: "Sono", Courier, monospace !important;
     font-optical-sizing: auto;
     font-weight: 250;
