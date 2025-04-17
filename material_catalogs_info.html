@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>First Draft (Names)</title>
+
+    <link href="basic_style.css" rel="stylesheet" />
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/eggplant/jquery-ui.min.css" rel="stylesheet"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/eggplant/theme.min.css" rel="stylesheet"/>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+
+    <link href="material_catalogs.css" rel="stylesheet" />
+    <link href="material_catalogs_2.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/rg-1.5.1/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.css" rel="stylesheet" integrity="sha384-Xci8E3EmP6WdMZz6B4CD/3ke9FK/g1lZhrMqmbBkJMMqEUqEC3jfiTWPYyDgyJob" crossorigin="anonymous">
+
+    <script src="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/rg-1.5.1/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js" integrity="sha384-LQWPqHdpWrz0yv8XxKAKXqna9vn7khAd1lX3cY69VbxkwpdfL0kPnsDJS0BX8Nh/" crossorigin="anonymous"></script>
+
+    <script>
+        var brush_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=VgvJ-bydfht7ZPF0iTz8sA4VoNwyku9121EGLHRpo7x1OaSfXePM14NxqPwmK_oDClGcAe18VcO_aWpkD7Rb20qdnFj_PcXqm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnA1cneL1LlcOPo-hHiCdsIyJPqOyH0KHxmQSFXT_XF2qTxZ3n-vJhtQuS6ugGfElTQFCIznRkdb-JIDheuWnTfb89AEbwB4ZPNz9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        //Immediately below: 3D Materials Catalogs
+        var csm_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=1SNvges2rHJzPscsuTB3zgrO069fQ5WWLtDbGg6WUIAkpWB6kLRVxfcGz84grPQuUw1Lpi9fEBFMTeaAjuI9g1Mk2fXc7xF8m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEjma00_hlPgBRgEohhVB0cDp5gCgNjLlxqbvNbw4G4ZKL7MpybrA17dHwpgheHImtuFujOrcDZwi53hKHrFKJm88yaiE8J0wNz9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        var img_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=ho43o-ExVVNCVPKERZ83SaLKcR1srp00-oY2hqSu24nV35P3bsbu2tW5wl8Wc7PhZMuwGNMGNi5p6tY5r57pPloKhMDjsnnAm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnGsPS5-J3DcWTrlCeyNM-h5CjYSV1o2xHvlerARaHKMxR2kT0db0-i52ZVxGvI8VDnQIASwRETNAaQLmL7wgD9dJQa22sAKaDdz9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        var aa_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=mpnHGndEOIBc663IeCN8J--NjPWOQk5JrdHbslbeZ7JbRKx2hKE8eu0OU9onPVpXcY1kqWqWQbEelQ3qhtGhZipyJ5AVxpA_m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnHZxwHmrVgu6N2YwmjlPp3w_pIyAHAxRJ8n85oZTifd8H5OXSZ8mEGg3vvEJJD2f27OHlyg0OxUb9qJBSNCxIrWxbcFOlASu99z9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        var tools_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=EuCqWWI3SLovwxxtUj86mImpTxp-umFD7PblvWvKcCA8TLantS4H8JdqsQh-zsHdbRtry0giz-PlUKeR-2EGZbVZXzh-dyaNm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnO2XLF4AFdlUqEx9wIuOr8mc6zI9pzHTfpyJqOxWmN2T4m7U6h1vOOG9RkVrpCPqN9mE57adQzZeTp96cFa9U2k9vPoLY8jBaNz9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        var grad_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=GFWR8ly8MiVaOyx3bWPq6qC_vnvtJrAtyX_QE45gxsR-wheomDbeSGzleuMsZvaXuIR6BrUZQAVMTeaAjuI9g65PKC8MppUum5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnDfcc_fM3QDu9MvTuBPB1yfkU5_hixGX1AkITo0ervaibjffkY1r0lj92cR12WdZRZe-7j58QrGrWEE1aqOUTk-6uzpuX2bOww&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr";
+
+        var layer_cat = "https://script.googleusercontent.com/macros/echo?user_content_key=OuJMR6gDuKuKMhV3pdfxpKuekZEW_hVoPM3wG2k_bMAa-kfm1u75TgkJ8DJe2yO_h8_QFYr6-TIQ8aVcg4wKu84qmlVBMkO9m5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnH-xnSNwz4wVSpjPGLMR52BLi31cuZaEYyPjJaDcmkfm53Um6h0NvFFuftoQY0nehpffVC7sLJrPE3bQe396ljHAUgWWkET7Qtz9Jw9Md8uu&lib=MDINsIK7xucu6ZjEjsiUcKPMu5J5nTZwr"
+
+        let brushResponse;
+        let gradResponse;
+        let threeDResponse;
+        let autoAResponse;
+        let toolsResponse;
+        let imgMResponce;
+        let layerResponce;
+
+        let brushData;
+        let gradData;
+        let threeDData;
+        let autoAData;
+        let toolsData;
+        let imgMData;
+        let layerData;
+
+        let output1;
+        let output2
+        let output3;
+        let output4;
+        let output5;
+        let output6;
+        let output7;
+        async function fetchDataSequentially() {
+            try {
+                const response1 = await fetch(brush_cat);
+                brushResponse = await response1.json();
+                console.log(brushResponse);
+
+                const response2 = await fetch(grad_cat);
+                gradResponse = await response2.json();
+                console.log(gradResponse);
+
+                const response3 = await fetch(csm_cat);
+                threeDResponse = await response3.json();
+                console.log(threeDResponse);
+
+                const response4 = await fetch(aa_cat);
+                autoAResponse = await response4.json();
+                console.log(autoAResponse);
+
+                const response5 = await fetch(tools_cat);
+                toolsResponse = await response5.json();
+                console.log(toolsResponse);
+
+                const response6 = await fetch(img_cat);
+                imgMResponce = await response6.json();
+                console.log(imgMResponce);
+
+                const response7 = await fetch(layer_cat);
+                layerResponce = await response7.json();
+                console.log(layerResponce);
+
+
+            } catch (error) {
+                console.error("Error:", error);
+            }
+
+        }
+$(document).ready(function () {
+	$("#progressbar").progressbar({
+		value: false
+     });
+
+	$("#loading-text").text("Loading...");
+
+        fetchDataSequentially().then(responce => {
+            brushData = brushResponse.data1;
+            gradData = gradResponse.data2;
+            threeDData = threeDResponse.data3;
+            autoAData = autoAResponse.data4;
+            toolsData = toolsResponse.data5;
+            imgMData = imgMResponce.data6;
+            layerData = layerResponce.data;
+
+
+            output1 = brushData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)" ) { return false } else { return true }
+            });
+
+            console.log(output1);
+            output2 = gradData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output2);
+
+            output3 = threeDData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output3);
+
+            output4 = autoAData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output4);
+
+            output5 = toolsData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output5);
+
+            output6 = imgMData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output6);
+
+            output7 = layerData.filter((item) => {
+                if (item["Asset Link"] === "(waiting)") { return false } else { return true }
+            })
+            console.log(output7);
+        })
+                .finally(function(){
+
+					$("#loading-text").text("Data loaded successfully!");
+					$('#progressbar').fadeOut(400);
+					$('#loading-text').delay(2000).fadeOut();
+					$('#loading-holder').delay(2300).fadeOut();
+
+
+                        $("#tabs").show();
+                        $("#tabs").tabs();
+                        new DataTable('#brushes', {
+                            data: output1,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+},
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    } },
+                            ]
+                        });
+
+                        new DataTable('#three-d', {
+                            data: output3,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
+
+                        new DataTable('#auto-action', {
+                            data: output4,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
+
+                        new DataTable('#tools', {
+                            data: output5,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
+
+                        new DataTable('#image-material', {
+                            data: output6,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
+                        new DataTable('#layers', {
+                            data: output7,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
+
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
+
+                    });
+        });
+    </script>
+</head>
+<body>
+    <div id="loading-holder">
+        <span id="loading-text"></span>
+        <span class="warn"> (This is gonna take a horrifying amount of time.) </span>
+        <div id="progressbar"></div>
+    </div>
+
+    <div id="tabs">
+        <ul>
+            <li><a href="#Brushes">Brushes</a></li>
+            <li>Gradients</li>
+            <li><a href="#3D">3D</a></li>
+            <li><a href=" #AA">Auto-Actions</a></li>
+            <li><a href=" #Tools">Tools</a></li>
+            <li><a href=" #Img-Mat">Image Materials</a></li>
+            <li><a href=" #Layers-Mat">Layer/Layer Templates</a></li>
+        </ul>
+        <div id="Brushes">
+            <div class="little-table"><table id="brushes" class="stripe"></table></div>
+        </div>
+        <div id="Grads">
+            <div class="little-table"><table id="gradients" class="stripe"></table></div>
+        </div>
+        <div id="3D">
+            <div class="little-table"><table id="three-d" class="stripe"></table></div>
+        </div>
+        <div id="AA">
+            <div class="little-table"><table id="auto-action" class="stripe"></table></div>
+        </div>
+
+        <div id="Tools">
+            <div class="little-table"><table id="tools" class="stripe"></table></div>
+        </div>
+        <div id="Img-Mat">
+            <div class="little-table"><table id="image-material" class="stripe"></table></div>
+        </div>
+        <div id="Layers-Mat">
+            <div class="little-table"><table id="layers" class="stripe"></table></div>
+        </div>
+
+    </div>
+</body>
+</html>
