@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8" />
+	<title>Dropdown Experimentation (All Panels)</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/eggplant/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/themes/eggplant/theme.min.css">
+	<link href="material_catalogs.css" rel="stylesheet" />
+	<style>
+		#no-peeking {
+			display: none;
+		}
+	</style>
+
+	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+
+	<script src="https://fred-site.neocities.org/Javascript/Vanilla/json2html.js"></script>
+
+
+
+
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.min.css" integrity="sha512-p/7j92gn7aB9tDnfPF70pYqrHofcWtimt2eA+yEe2+h74ur0vHO79yjrpF0s1K9d02R6gkpBmLdZwPaCiazPQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<script>
+		Pace.options = {
+			startOnPageLoad: false,
+			restartOnPushState: true,
+			restartOnRequestAfter: true,
+			ajax: {
+				trackMethods: ['GET', 'POST', 'PUT', 'DELETE', 'REMOVE'],
+				trackWebSockets: true,	
+			},
+			eventLag: true
+		};
+		
+
+		var dropTemplate =
+			{ "<>": "option", "value": "${assetNum}", "text": "${assetNum}" };
+
+		function getAssetByCode(data, number) {
+			return data.filter(
+				function (data) {
+					//Note the number of equals signs!
+					return data["Asset #"] == number;
+				}
+			);
+		}
+
+		function getAssetByCode2(data, number) {
+			return data.filter(
+				function (data) {
+					//Note the number of equals signs!
+					return data["assetNum"] == number;
+				}
+			);
+		}
+
+		var brush_url = "https://script.googleusercontent.com/macros/echo?user_content_key=WF5sBDjRX0CN5OqIM4DLQq27cs8KMRN40wJyaExwQSdznZ5bFcocKgcsCbNTfUuCdS0brOgt0PzHxOrZndGpXSb-7nzEfMjJm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCjSRaZ8mE7c0sBWe6R5aCOBbl5IF8cRIxRhM2rWrfi7IPG9NoAhHWYZBkio1TlqDYrf5fh4ASOdyMRWFz3EhDp0lZyfHJtu8g&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
+
+		var grad_url = "https://script.googleusercontent.com/macros/echo?user_content_key=T_-q_VDARcCTFl6tQ7F-pQrSzzSXrlldpwp95voXs_UdvxzqF7bLir-aRIIOIMVzdy9NKqHO6lWZcAWx7AtD2sBKhNajIDBSm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCaCmZCqkXrWGhkmZOmXqTyeJaB0Yhz-SFaE2tZsO7cwdPDVg1QM7_2JNcb5sykA8-IApzVQZcSO0wTYq5eFS5nCoPU8vdkyIdz9Jw9Md8uu&lib=MIW6qBvqXIqjC3iVw-qO25vMu5J5nTZwr";
+
+		var threeD_url = "https://script.googleusercontent.com/macros/echo?user_content_key=GdtdMIP1po9_aTO5hhVRkYbH2_5-RyeCEJPUWffj280vQjTvfzTyMI-XE49HuH9tarHludtA8fOZcAWx7AtD2p4Kv2OcBGYym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPq9DAUK72gCDC8YekjRRqta64EVpE2A1vEJ73QzFAlWrmbZJbBvCRNID0ylX4YRN0VIiSNjTGKRYNotFbYBjCH5J93WegpWQtz9Jw9Md8uu&lib=MQ1SgrCJYxh3g5Z_OzGTSYfMu5J5nTZwr";
+
+		var aa_url = "https://script.googleusercontent.com/macros/echo?user_content_key=srBDz0c57la3TWD4OPZnZHYD2VctfalPSTHAQmsIzfCyrAKmeiCu72R5LfHX0L1Vk3WfkM3RJoaZcAWx7AtD2jxfDeILsPYVm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFHlJqtdvGFkHs0Dsm55nyVeostxkZAVUeYo8AUSGMH8p4QGS7JJYUnmrY6x2jRqSFU2r3BQ2iY5HNHzn_bOaj3GYrXNT78wgA&lib=MAfIh9qlqUmcL72tHPVIk36WZ8rqdjnSl";
+
+		var tools_url = "https://script.googleusercontent.com/macros/echo?user_content_key=hH3usBQVgcHzEm_ZqZ75DT2yXacYk4W6vwe9W-Jao0WAJH22VkHMST4E0KoR5bOD__y3RqfaNwsitFSent6dRw9sOCpWwc0Lm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnADMbeTLmSXNWgCtGzTGSRBUfDjK5FyveNYyUeL-af2nWjNmOAPU675WAN9VxDaP18DKy-jytJMY537HyTAbp6QuzdndE6vXAg&lib=MEZl9WWSgkemPDPpbRt_xmaWZ8rqdjnSl";
+
+		var img_url = "https://script.googleusercontent.com/macros/echo?user_content_key=_HVS7L_8KZZ-jSSA5N5bRxLbNJL7_DXgwrvjKpTGBL_RCUN9Itsof93cefpOtBTBCmWZJ14OfJuZcAWx7AtD2jjvJfnKlEFsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnElwh6aTwffaB0DtO8ajS0c5UAPVPSrt4XWaX6Y0pxbXbx2CPOsjcdkXkab3sBDhGCtD6y_seu2GMzQ25wce9h5KgYGWmJEpBtz9Jw9Md8uu&lib=MS5VzwnD6gq-FPhyPh_bt0_Mu5J5nTZwr";
+
+		var layer_url = "https://script.googleusercontent.com/macros/echo?user_content_key=wrmiiOEYBtj2OOVDgM9jHSb1VqJp0x8vfIltF1HEeoyvPItQE4UfbY7FEDZRRswRriF0fdgEApeZcAWx7AtD2mvVT5O0khYvm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnImz0vocTWr0WN0jkoM-QxjMKYjfgHe6i_nucIl_hmhGhZxULnBZV_Rqb314OokX9jiGVqd4eYWHQHU2YZJnyUfjEZ9LGLhnsQ&lib=MEl3FosQXNnozvS5EmkfB66WZ8rqdjnSl";
+
+
+		let brushResponse;
+		let gradResponse;
+		let threeDResponse;
+		let autoAResponse;
+		let toolsResponse;
+		let imgMResponce;
+		let layerResponce;
+
+		let brushData;
+		let gradData;
+		let threeDData;
+		let autoAData;
+		let toolsData;
+		let imgMData;
+		let layerData;
+
+		let output1;
+		let output1a;
+
+		let output2
+		let output2a;
+
+		let output3;
+		let output3a;
+
+		let output4;
+		let output4a;
+
+		let output5;
+		let output5a;
+
+		let output6;
+		let output6a;
+
+		let output7;
+		let output7a;
+		
+		async function fetchDataSequentially() {
+
+			try {
+
+				const response1 = await fetch(brush_url);
+				brushResponse = await response1.json();
+				console.log(brushResponse);
+				Pace.restart();
+				const response2 = await fetch(grad_url);
+				gradResponse = await response2.json();
+				console.log(gradResponse);
+				Pace.restart();
+				const response3 = await fetch(threeD_url);
+				threeDResponse = await response3.json();
+				console.log(threeDResponse);
+				Pace.restart();
+				const response4 = await fetch(aa_url);
+				autoAResponse = await response4.json();
+				console.log(autoAResponse);
+				Pace.restart();
+				const response5 = await fetch(tools_url);
+				toolsResponse = await response5.json();
+				console.log(toolsResponse);
+				Pace.restart();
+				const response6 = await fetch(img_url);
+				imgMResponce = await response6.json();
+				console.log(imgMResponce);
+				Pace.restart();
+				const response7 = await fetch(layer_url);
+				layerResponce = await response7.json();
+				console.log(layerResponce);
+				Pace.restart();
+
+			} catch (error) {
+				console.error("Error:", error);
+			}
+
+		}
+		fetchDataSequentially().then(responce => {
+			Pace.restart();
+			brushData = brushResponse.data;
+			gradData = gradResponse.data;
+			threeDData = threeDResponse.data;
+			autoAData = autoAResponse.data;
+			toolsData = toolsResponse.data;
+			imgMData = imgMResponce.data;
+			layerData = layerResponce.data;
+
+			//allProms1 = [brushData, gradData, threeDData, autoAData, toolsData, imgMData, layerData];
+
+			//Pace.track(Promise.all(allProms1));
+			
+			output1 = brushData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output1);
+
+			output2 = gradData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output2);
+
+			output3 = threeDData.filter((item) => {
+				if (item["Asset Name"] == false) { return false } else { return true }
+			});
+			console.log(output3);
+
+			output4 = autoAData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output4);
+
+			output5 = toolsData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output5);
+
+			output6 = imgMData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output6);
+
+			output7 = layerData.filter((item) => {
+				if (item["Asset"] == false) { return false } else { return true }
+			});
+			console.log(output7);
+		})
+			.then(data => {
+				Pace.restart();
+				//idFData = fetchedData2["Asset #"];
+				output1a = output1.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+
+				output2a = output2.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+
+				output3a = output3.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset Name"],
+					picUrl: item.URL
+				}));
+				//console.log(output3a);
+
+				output4a = output4.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+
+				output5a = output5.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+
+				output6a = output6.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+
+				output7a = output7.map((item) => ({
+					assetNum: item["Asset #"],
+					asset: item["Asset"],
+					picUrl: item.URL
+				}));
+			})
+			.finally(function () {
+				//change reference locations: #d1 4x, #h1 2x, #i1 2x, varable numbers for code, asset, and assetName
+				Pace.restart();
+				$(document).ready(function () {
+					$("#no-peeking").show();
+					$("#thumbnail-search-panel").accordion();
+					$("#d1").json2html(output1a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code;
+					var asset;
+					var assetName;
+
+					code = $("#d1").val();
+					asset = getAssetByCode2(output1a, code)
+					document.getElementById('h1').innerHTML = asset[0].asset;
+					assetName = asset.Asset;
+					var imageString;
+					$('#i1 .image-box-inner').html("<img src='" + asset[0].picUrl + "'>");
+					//document.getElementById('i1').innerHTML = "<img src='" + asset[0].picUrl + "'>";
+					$("#d1").on("change", function () {
+						code = $("#d1").val();
+						asset = getAssetByCode2(output1a, code)
+						//Below: title of asset loaded in.
+						document.getElementById('h1').innerHTML = asset[0].asset;
+						assetName = asset.Asset;
+					});
+					console.log(code);
+					$("#id-submit").on('click', function () {
+						$('#i1 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i1').innerHTML = code;
+					});
+
+					//--------------------------------------------------------------------------------------------------
+					$("#d2").json2html(output2a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_2;
+					var asset_2;
+					var assetName_2;
+
+					code_2 = $("#d2").val();
+					asset_2 = getAssetByCode2(output2a, code_2)
+					document.getElementById('h2').innerHTML = asset_2[0].asset;
+					assetName_2 = asset_2.Asset;
+					var imageString_2;
+					$('#i2 .image-box-inner').html("<img src='" + asset_2[0].picUrl + "'>");
+					//document.getElementById('i1').innerHTML = "<img src='" + asset_2[0].picUrl + "'>";
+					$("#d2").on("change", function () {
+						code_2 = $("#d2").val();
+						asset_2 = getAssetByCode2(output2a, code_2)
+						//Below: title of asset loaded in.
+						document.getElementById('h2').innerHTML = asset_2[0].asset;
+						assetName_2 = asset_2.Asset;
+					});
+					console.log(code);
+					$("#id-submit-2").on('click', function () {
+						$('#i2 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_2[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i1').innerHTML = code;
+					});
+					//--------------------------------------------------------------------------------------------------
+					$("#d3").json2html(output3a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_3;
+					var asset_3;
+					var assetName_3;
+
+					code_3 = $("#d3").val();
+					//console.log(code_3);
+					asset_3 = getAssetByCode2(output3a, code_3);
+					console.log(asset_3);
+					document.getElementById('h3').innerHTML = asset_3[0].asset;
+					assetName_3 = asset_3.asset;
+					var imageString;
+					$('#i3 .image-box-inner').html("<img src='" + asset_3[0].picUrl + "'>");
+					console.log(asset_3[0].picUrl);
+					//document.getElementById('i3').innerHTML = "<img src='" + asset_3[0].picUrl + "'>";
+					$("#d3").on("change", function () {
+						code_3 = $("#d3").val();
+						//console.log(code_3);
+						asset_3 = getAssetByCode2(output3a, code_3);
+						//console.log(asset_3);
+						//Below: title of asset loaded in.
+						document.getElementById('h3').innerHTML = asset_3[0].asset;
+						assetName_3 = asset_3.asset;
+						//console.log(asset_3[0].picUrl);
+					});
+					console.log(code_3);
+					$("#id-submit-3").on('click', function () {
+						$('#i3 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_3[0].picUrl + "'>").fadeIn(400);
+							//console.log(asset_3[0].picUrl);
+						});
+
+						//document.getElementById('i3').innerHTML = code_3;
+					});
+					//--------------------------------------------------------------------------------------------------
+					$("#d4").json2html(output4a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_4;
+					var asset_4;
+					var assetName_4;
+
+					code_4 = $("#d4").val();
+					asset_4 = getAssetByCode2(output4a, code_4)
+					document.getElementById('h4').innerHTML = asset_4[0].asset;
+					assetName_4 = asset_4.Asset;
+					var imageString;
+					$('#i4 .image-box-inner').html("<img src='" + asset_4[0].picUrl + "'>");
+					//document.getElementById('i4').innerHTML = "<img src='" + asset_4[0].picUrl + "'>";
+					$("#d4").on("change", function () {
+						code_4 = $("#d4").val();
+						asset_4 = getAssetByCode2(output4a, code_4)
+						//Below: title of asset loaded in.
+						document.getElementById('h4').innerHTML = asset_4[0].asset;
+						assetName_4 = asset_4.Asset;
+					});
+					console.log(code_4);
+					$("#id-submit-4").on('click', function () {
+						$('#i4 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_4[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i4').innerHTML = code_4;
+					})
+					//--------------------------------------------------------------------------------------------------
+
+					$("#d5").json2html(output5a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_5;
+					var asset_5;
+					var assetName_5;
+
+					code_5 = $("#d5").val();
+					asset_5 = getAssetByCode2(output5a, code_5)
+					document.getElementById('h5').innerHTML = asset_5[0].asset;
+					assetName_5 = asset_5.Asset;
+					var imageString;
+					$('#i5 .image-box-inner').html("<img src='" + asset_5[0].picUrl + "'>");
+					//document.getElementById('i5').innerHTML = "<img src='" + asset_5[0].picUrl + "'>";
+					$("#d5").on("change", function () {
+						code_5 = $("#d5").val();
+						asset_5 = getAssetByCode2(output5a, code_5)
+						//Below: title of asset loaded in.
+						document.getElementById('h5').innerHTML = asset_5[0].asset;
+						assetName_5 = asset_5.Asset;
+					});
+					console.log(code_5);
+					$("#id-submit-5").on('click', function () {
+						$('#i5 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_5[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i5').innerHTML = code_5;
+					})
+
+
+					//--------------------------------------------------------------------------------------------------
+
+					$("#d6").json2html(output6a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_6;
+					var asset_6;
+					var assetName_6;
+
+					code_6 = $("#d6").val();
+					asset_6 = getAssetByCode2(output6a, code_6)
+					document.getElementById('h6').innerHTML = asset_6[0].asset;
+					assetName_6 = asset_6.Asset;
+					var imageString;
+					$('#i6 .image-box-inner').html("<img src='" + asset_6[0].picUrl + "'>");
+					//document.getElementById('i6').innerHTML = "<img src='" + asset_6[0].picUrl + "'>";
+					$("#d6").on("change", function () {
+						code_6 = $("#d6").val();
+						asset_6 = getAssetByCode2(output6a, code_6)
+						//Below: title of asset loaded in.
+						document.getElementById('h6').innerHTML = asset_6[0].asset;
+						assetName_6 = asset_6.Asset;
+					});
+					console.log(code_6);
+					$("#id-submit-6").on('click', function () {
+						$('#i6 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_6[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i6').innerHTML = code_6;
+					})
+
+
+					//--------------------------------------------------------------------------------------------------
+
+					$("#d7").json2html(output7a, dropTemplate);
+					$(".form-holder").fadeIn();
+					$('select option').addClass('ui-menu-item-wrapper');
+					var code_7;
+					var asset_7;
+					var assetName_7;
+
+					code_7 = $("#d7").val();
+					asset_7 = getAssetByCode2(output7a, code_7)
+					document.getElementById('h7').innerHTML = asset_7[0].asset;
+					assetName_7 = asset_7.Asset;
+					var imageString;
+					$('#i7 .image-box-inner').html("<img src='" + asset_7[0].picUrl + "'>");
+					//document.getElementById('i7').innerHTML = "<img src='" + asset_7[0].picUrl + "'>";
+					$("#d7").on("change", function () {
+						code_7 = $("#d7").val();
+						asset_7 = getAssetByCode2(output7a, code_7)
+						//Below: title of asset loaded in.
+						document.getElementById('h7').innerHTML = asset_7[0].asset;
+						assetName_7 = asset_7.Asset;
+					});
+					console.log(code_7);
+					$("#id-submit-7").on('click', function () {
+						$('#i7 .image-box-inner').fadeOut(400, function () {
+							$(this).html("<img src='" + asset_7[0].picUrl + "'>").fadeIn(400);
+						});
+
+						//document.getElementById('i7').innerHTML = code_7;
+					})
+
+					//--------------------------------------------------------------------------------------------------
+				})
+
+			});
+	</script>
+
+</head>
+<body>
+    <h1> Dropdown Experimentation </h1>
+<p> Please wait for everything to load. It'll take a minute...</p>
+	<div id="no-peeking">
+
+		<div id="thumbnail-search-panel">
+			<h3>Brushes</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h1"></h1>
+						</div>
+						<div id="f1" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d1"></select><input id="id-submit" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+
+					<div id="i1" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Gradients</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h2"></h1>
+						</div>
+						<div id="f2" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d2"></select><input id="id-submit-2" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i2" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>3D</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h3"></h1>
+						</div>
+						<div id="f3" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d3"></select><input id="id-submit-3" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i3" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Auto-Actions</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h4"></h1>
+						</div>
+						<div id="f4" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d4"></select><input id="id-submit-4" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i4" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Tools</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h5"></h1>
+						</div>
+						<div id="f5" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d5"></select><input id="id-submit-5" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i5" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Image Materials</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h6"></h1>
+						</div>
+						<div id="f6" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d6"></select><input id="id-submit-6" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i6" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+			<h3>Layers</h3>
+			<div>
+				<div class="img-lookup-2">
+					<div class="title-box">
+						<div class="left-column">
+							<h1 id="h7"></h1>
+						</div>
+						<div id="f7" class="form-holder">
+							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d7"></select><input id="id-submit-7" class="ui-button ui-corner-all ui-widget" type="submit" />
+						</div>
+					</div>
+					<div id="i7" class="ui-state-default image-box">
+						<div class="image-box-inner"></div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+</body>
+</html>
