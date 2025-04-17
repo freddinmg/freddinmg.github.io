@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width" />
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="https://fred-site.neocities.org/fav_icon/feather_favicon96x96.ico">
+    
+    <title>CSP Brush Assets List</title>
+
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/juery-ui.css" rel="stylesheet"/>
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/jquery-ui.structure.css" rel="stylesheet"/>
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/jQuery_UI_Custom/JQ_Theme_1/jquery-ui.theme.css" rel="stylesheet"/>
+
+    <link href="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/cr-2.0.4/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.css" rel="stylesheet" integrity="sha384-qcdSMcD/Q3Uv2jt8kfS+QBTVIvA2K3xn6LkDIBi1ALtIOj+XbFtclwJjvy4M5gIt" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cousine:ital,wght@0,400;0,700;1,400;1,700&family=Encode+Sans+Expanded:wght@100;200;300;400;500;600;700;800;900&family=Fascinate&family=Honk&family=K2D:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Nabla:EDPT@111&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Silkscreen:wght@400;700&family=Syne+Mono&family=Unica+One&display=swap" rel="stylesheet">
+
+    <link href="navigation_style.css" rel="stylesheet" />
+    <link href="base_table_stylesheet.css" rel="stylesheet" />
+    <link href="general_table_stylesheet.css" rel="stylesheet" />
+    <link href="purple_table.css" rel="stylesheet" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+
+    <script src="https://fred-site.neocities.org/Javascript/jQuery/Lightbox2/src/js/lightbox.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js" integrity="sha384-VFQrHzqBh5qiJIU0uGU5CIW3+OWpdGGJM9LBnGbuIH2mkICcFZ7lPd/AAtI7SNf7" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js" integrity="sha384-/RlQG9uf0M2vcTw3CX7fbqgbj/h8wKxw7C3zu9/GxcBPRKOEcESxaxufwRXqzq6n" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.datatables.net/v/dt/jszip-3.10.1/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/b-html5-3.2.2/date-1.5.5/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js" integrity="sha384-NvdL29zVAOFjWtEqg1ZI0MgNFOQu3Mi1LggvgNBgbohvoHiHMPH4ggGqdi+pxwBO" crossorigin="anonymous"></script>
+
+    <script src="https://fred-site.neocities.org/Javascript/jQuery/moment/moment.js"></script>
+
+    <link href="https://fred-site.neocities.org/Javascript/jQuery/Lightbox2/src/css/lightbox.css" rel="stylesheet" />
+
+    <script>
+        var tagRegex = new RegExp("\[(.*?) \]");
+        var d = new Date();
+        var todayMonth = d.getMonth();
+        var todayDate = d.getDate();
+        var todayYear = d.getYear();
+        var todayISO = d.toISOString();
+        //IMPORTING THE DATA TO THE TABLES WORKED! I did have to remove the empty cells from the end of the information array. There's some kind of problem with importrange.
+
+
+        /*
+        var taggedCol1;
+        var taggedColDiv;
+        var taggedCol1Html;
+        var taggedColDivHtml;
+        var newHtml1;
+        var newHtml2;
+
+        var split1;
+        var split3;
+
+        var taggedCol1Text;
+        */
+
+        $(document).ready(function () {
+            //FUNCTION
+
+
+            $("#progressbar").progressbar({
+                value: false
+            });
+            $("#loading-text").text("Loading...");
+
+			var jsonInfo = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLjKrWMAL6K0tw9DKt5xjLpU1SptLcoDtPUi3OP9b4oEQLl5NAaEH-YbH9Sc40UBQ8lzbyfRXmWHkjEtLrPpzPIq4NACKoqQnFHc4ADtLiB_uDDUNC1pMr1WO3SuwZQZSVZIQ5eHo4bBl2I7eV4mbvlT7gD-UK4WLa7fPcmv--54bYsaIVJjnX5qTnw5CqtQaG0vnTxrEBENnyNrS3NnoYo4adVw0if-w57cAMBNp5IMT7vewdYQoJNXUnlpvmvP6aSCXQS9_tMZBekdEU3RJJDBp0B5OPE-V1-NXHXl&lib=MQ1SgrCJYxh3g5Z_OzGTSYfMu5J5nTZwr";
+
+            //JSON Images is still linked to the sheet copy, replace soon.
+			var jsonImages = "https://script.googleusercontent.com/macros/echo?user_content_key=AehSKLgJZ9qaW9UIso_kZ4XCFlJsueZJnpXDakjCrjwIhgtqW--5HLfxvBFjauWu9YPjvCFkNxmfOJkYQeHVnZ7W107IQugHQLjO7cs-BlK0Nu_Vi8z2rmw8RbG-PgNwIOHdHTff882yLnP8P07i4meWP6Y3WAIGHFzxBtVRrpfQYFlLYaOkUoGRgpVTiuUJ6Tp-AAj6DUdQF_JoGgZhy_b3ERHAxxHonVuztEt84FaRwtD8J7kqfQzwhc9BDK9-8VoP-FOLIhB7KJ3NIJsy67KnunKbVCqfeYwloeCWMFv7&lib=MQ1SgrCJYxh3g5Z_OzGTSYfMu5J5nTZwr";
+
+            let infoResponse;
+            let imgResponse;
+            let output2;
+            let output3A;
+            let object3B;
+            let output4B;
+
+			var isVis9;
+			var isVis11;
+
+            async function fetchDataSequentially() {
+                try {
+                    const response1 = await fetch(jsonInfo);
+                    infoResponse = await response1.json();
+                    console.log(infoResponse);
+
+                    const response2 = await fetch(jsonImages);
+                    imgResponse = await response2.json();
+
+                    console.log(imgResponse);
+                } catch (error) {
+                    console.error("Error:", error);
+                }
+
+            }
+
+            fetchDataSequentially().then(responce => {
+                $("#loading-text").text("Creating Asset Information...");
+                json1_2 = imgResponse.data;
+                json2_2 = infoResponse.data;
+
+                //JSON to get just the URLS from first JSON Object
+                output2 = json1_2.map((item) => ({
+                    URL: item.URL
+                }));
+
+                //JSON to filter out "empty" objects (no values to properties)
+                output3A = json2_2.filter((item) => {
+                    if (item["ID Number"] == false && item["Author"] == false && item["Asset Name"] == false) { return false } else { return true }
+                })
+
+                //JSON to combine URL with other JSON Object
+                output3B = output3A.map((item, index) => ({
+                    id: item["ID Number"],
+                    name: item["Asset Name"],
+                    author: item.Author,
+                    tags: item.Tags,
+                    imgURL: Object.values(output2)[index],
+                    threeDCategory: item["3D Asset Category"],
+                    availableFree: item["Available for Free?"],
+                    limitedFree: item["Limited Time Free?"],
+                    dateUploaded: item["Date Uploaded"],
+                    daysFree: item["Days Free"],
+                    dateEnd: item["Date Sale Ends"],
+                    gold: item.Gold,
+                    clippy: item.Clippy,
+                    otherCategories: item["Other Categories"],
+                    starred: item["Notes"]
+                }));
+                $("#loading-text").text("Creating Asset Thumbnails...");
+
+                //JSON to remove URL outer object.
+                output4B =
+                    output3B.map((item, index) => ({
+                        id: item.id,
+                        name: item.name,
+                        author: item.author,
+                        tags: item.tags,
+                        imgURL: item.imgURL.URL,
+                        threeDCategory: item.threeDCategory,
+                        availableFree: item.availableFree,
+                        limitedFree: item.limitedFree,
+                        dateUploaded: item.dateUploaded,
+                        daysFree: item.daysFree,
+                        dateEnd: item.dateEnd,
+                        gold: item.gold,
+                        clippy: item.clippy,
+                        otherCategories: item.otherCategories,
+                        starred: item.starred
+                    }));
+                //alert('Try accessing the variables now!')
+            })
+                .finally(function () {
+                    $("#loading-text").text("Data loaded successfully!");
+                    $('#progressbar').fadeOut(400);
+                    $('#loading-text').delay(2000).fadeOut();
+                    $('#loading-holder').delay(2300).fadeOut();
+
+                    var table = new DataTable("#myTable", {
+                        stateSave: true,
+                        hover: true,
+                        fixedColumns: {
+                            start: 3,
+                        },
+                        responsive: true,
+                        layout: {
+                            topStart: {
+                                buttons: [
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'Bare Info',
+                                        show: [0, 1, 2, 3, 4, 6, 14],
+                                        hide: [5, 7, 8, 9, 10, 11, 12, 13]
+                                    },
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'Bare Info & Thumbnails',
+                                        show: [0, 1, 2, 3, 4, 5, 6, 14],
+                                        hide: [7, 8, 9, 10, 11, 12, 13]
+                                    },
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'Hide Images',
+                                        show: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+                                        hide: [5]
+                                    },
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'No Tags',
+                                        show: [0, 1, 2, 3, 4, 6, 7, 8, 9, 10, 11, 12, 14],
+                                        hide: [4, 6 ,14]
+                                    },
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'Sale Periods',
+                                        show: [0, 1, 2, 3, 4, 5, 6, 7, 11, 12, 13, 14],
+                                        hide: [9, 10, 11]
+                                    },
+                                    {
+                                        extend: 'colvisGroup',
+                                        text: 'Show all',
+                                        show: ':hidden'
+                                    }
+                                ]
+                            }
+                        },
+                        scrollCollapse: true,
+                        scrollX: true,
+                        fixedHeader: true,
+                        columnDefs: [
+                            { className: "dateCol1", targets: [9] },
+							{ className: "dateCol2", targets: [11] }
+                        ],
+                        columns: [
+                            {
+                                title: 'ID Number', data: "id", render: function (data) {
+                                    return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                }
+                            },
+                            {
+                                title: 'Asset Name', data: "name", render: function (data) {
+                                    return "<span class = 'asset-span'>" + data + "</span>";
+                                }
+                            },
+                            {
+                                title: 'Notes?', data: "starred", render: function (data) {
+                                    if (data === true) { return "<span class = 'pop-2'> &#8264; </span>" }
+                                    else { return "<span class='pop-2'> </span>" };
+                                }
+                            },
+                            {
+                                title: 'Author', data: "author", render: function (data) {
+                                    return "<span class = 'author-span'>" + data + "</span>";
+                                },
+                            },
+
+                            {
+                                title: 'Tags', data: "tags", render: function (data) {
+                                    var taggedCol1Text = data;
+
+                                    var split1 = taggedCol1Text.split('[');
+                                    var split2 = split1.filter(function (e) {
+                                        return e; // Returns only the truthy values
+                                    });
+
+                                    var split3 = split2.map(x => x.replace(']', ''));
+
+                                    var listHTML = "<ul>";
+                                    for (let i = 0; i < split3.length; i++) {
+                                        listHTML += "<li>" + split3[i] + "</li>";
+                                    }
+                                    listHTML += "</ul>";
+
+                                    return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                }
+                            },
+                            {
+                                title: 'Image URL', data: "imgURL", render: function (data, JsonResultRow) {
+                                    return "<a data-lightbox='gallery' href = '" + data + "'><img class='thumbnail' src='" + data + "'></a>";
+                                }
+                            },
+                            {
+                                title: '3D Category', data: "threeDCategory", render: function (data) {
+                                    var taggedCol1Text = data;
+
+                                    var split1 = taggedCol1Text.split('[');
+                                    var split2 = split1.filter(function (e) {
+                                        return e; // Returns only the truthy values
+                                    });
+
+                                    var split3 = split2.map(x => x.replace(']', ''));
+
+                                    var listHTML = "<ul>";
+                                    for (let i = 0; i < split3.length; i++) {
+                                        listHTML += "<li>" + split3[i] + "</li>";
+                                    }
+                                    listHTML += "</ul>";
+
+                                    return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                }
+                            },
+                            {
+                                title: 'Available for Free?', data: "availableFree", render: function (data) {
+                                    if (data === true) { return "<span class = 'pop'> &#9989; </span>" }
+                                    else { return "<span class = 'pop'> &#10060 </span>" };
+                                }
+                            },
+                            {
+                                title: 'Limited Time Free?', data: "limitedFree", render: function (data) {
+                                    if (data === true) { return "<span class = 'pop'> &#9989; </span>" }
+                                    else { return "<span class = 'p'> &#10060 </span>" };
+                                },
+                            },
+                            {
+                                title: 'Date Uploaded', data: "dateUploaded", render: DataTable.render.datetime('DD/MM/YYYY')
+                            },
+                            {
+                                title: 'Days Free', data: "daysFree", render: function (data) {
+                                    if (data !== "") { return data }
+                                    else { return "<span class='no-data'>No days recorded.</span>" };
+                                },
+                            },
+                            {
+                                title: 'Date Sale Ends', data: "dateEnd", render: DataTable.render.datetime('DD/MM/YYYY')
+                            },
+                            {
+                                //Couldn't figure out how to make the render function work for regular numbers, but! I got the actual value of the data to "represent" the locale string without just reading that as....well, a string.
+                                title: 'Gold Cost', data: "gold", render: function (data) {
+                                    var value;
+                                    if (data !== "") { value = Number(data) || 0; return value.toLocaleString('en-US') }
+                                    else { return 0 };
+                                },
+                            },
+                            {
+                                //Couldn't figure out how to make the render function work for regular numbers, but! I got the actual value of the data to "represent" the locale string without just reading that as....well, a string.
+                                title: 'Clippy Cost', data: "clippy", render: function (data) {
+                                    var value;
+                                    if (data !== "") { value = Number(data) || 0; return value.toLocaleString('en-US') }
+                                    else { return 0 };
+                                },
+                            },
+                            {
+                                title: 'Other Categories', data: "otherCategories", render: function (data) {
+                                    var taggedCol1Text = data;
+
+                                    var split1 = taggedCol1Text.split('[');
+                                    var split2 = split1.filter(function (e) {
+                                        return e; // Returns only the truthy values
+                                    });
+
+                                    var split3 = split2.map(x => x.replace(']', ''));
+
+                                    var listHTML = "<ul>";
+                                    for (let i = 0; i < split3.length; i++) {
+                                        listHTML += "<li>" + split3[i] + "</li>";
+                                    }
+                                    listHTML += "</ul>";
+
+                                    return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                }
+                            },
+
+                        ],
+                        data: output4B,
+                        rowCallback: function (row, data) {
+
+							if (data.dateUploaded == "") { $("td.dateCol1", row).html("<div class='no-data'>No date recorded.</div>") };
+                            if (data.dateUploaded != "" && data.dateEnd > todayISO) { $("td:eq(1)", row).find(".asset-span").addClass("dateSaleActive"); $("td:eq(2)", row).find(".author-span").addClass("dateSaleActive") } else { $("td:eq(1)", row).find(".asset-span").removeClass("dateSaleActive"); $("td:eq(2)", row).find(".author-span").removeClass("dateSaleActive") };
+							if (data.dateEnd == "") { $("td.dateCol2", row).html("<div class='no-data'>No date recorded.</div>") };
+
+                            //console.log(split1)
+                            //console.log(split2)
+
+                        },
+
+
+                    });
+                })
+
+            //DEADASS, render wasn't working until I changed single quotes to double quotes and vice versa.
+
+
+
+
+        });
+
+    </script>
+    <script>
+        function wrapTextWithSpan(element, regex, className) {
+            element.html(function (index, oldHTML) {
+                return oldHTML.replace(regex, function (matched) {
+                    return '<span class="' + className + '">' + matched + '</span>';
+                });
+            });
+        }
+
+        // Example usage:
+
+        var myRegex = /\[(.*?)\]/g;
+        var tagRowText = $("#myTable tr td:nth-child(5)").text();
+
+        var text = $("#myTable tr td:nth-child(4)");
+        var text2 = text.text();
+
+        var myClass1 = $("#tag-holder");
+        var myClass2 = 'tag';
+
+        //var text3 = "Does this work?";
+        $("#myTable tr td:nth-child(4)").first().wrapInner("<div id='tag-holder'></div>");
+
+        wrapTextWithSpan(myClass1, myRegex, myClass2);
+
+        //if (text2.match(myRegex) != false) { text.wrapInner("<span class='tag'></span>") };
+    </script>
+</head>
+<body>
+    <h1>3D Assets</h1>
+    <div id="loading-holder">
+        <span id="loading-text"></span>
+        <div id="progressbar"></div>
+    </div>
+    <div id="json-table"></div>
+
+    <table id="myTable" class="display" width="100%"></table>
+
+</body>
+</html>

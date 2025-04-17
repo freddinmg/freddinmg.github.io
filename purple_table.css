@@ -1,0 +1,131 @@
+table.dataTable thead > tr > th.dt-orderable-asc {
+    text-shadow: 1px 1px 2px rgba(75, 0, 130, 0.5);
+}
+.dt-column-title {
+    color: #cfcbff;
+}
+
+table.dataTable thead tr > .dtfc-fixed-start {
+    background-color: #514695;
+    color: white;
+    text-shadow: 1px 1px 2px rgba(75, 0, 130, 0.5);
+}
+
+.asset-span {
+    color: #cfcbff;
+}
+
+.dtfc-fixed-start .dt-column-title {
+    color: white;
+}
+
+
+tr:nth-child(odd) {
+    background-color: #6963BB;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 {
+    mix-blend-mode: color-burn;
+}
+
+table.dataTable.display > tbody > tr:nth-child(odd) > .sorting_1 {
+    mix-blend-mode: multiply;
+}
+
+/* orangered tag li elements, on the lighter stripes.*/
+tr:nth-child(odd) .sorting_1:has(>.tag-box) {
+    mix-blend-mode: exclusion !important;
+}
+
+tr:nth-child(odd) .sorting_1 .no-data {
+    color: black !important;
+    mix-blend-mode: multiply;
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(odd) > *, table.dataTable.display > tbody > tr:nth-child(odd) > * {
+    box-shadow: inset 0 0 0 9999px rgba(154, 150, 187, 0.05) !important;
+}
+
+/* Checkmarks and Xs for true/false */
+tr:nth-child(even) .sorting_1 .pop {
+    filter: brightness(25%) contrast(1.35);
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(even) > *, table.dataTable.display > tbody > tr:hover {
+    filter: brightness(110%);
+}
+
+table.dataTable tbody tr:nth-child(odd) > .dtfc-fixed-start {
+    background-color: #6963BB;
+}
+
+table.dataTable tbody tr:nth-child(even) > .dtfc-fixed-start {
+    background-color: #5049AC;
+}
+
+table.dataTable tbody tr > .dtfc-fixed-start {
+    border-left: none;
+}
+
+.ui-progressbar-value {
+    background: indigo !important;
+}
+
+/* Where the asset ID links are */
+table.dataTable.display > tbody > tr a {
+    color: lightskyblue;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 a {
+    color: indigo;
+}
+
+#myTable tr {
+    background-color: #E5E5FD;
+}
+
+    #myTable tr td:nth-child(3) {
+        border-right: 1px solid rgba(108, 22, 138, 0.4);
+    }
+
+table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
+    border-bottom-width: 2px;
+    border-bottom-color: rgba(108, 22, 138, 0.4) !important;
+}
+
+.tag-box li {
+    border: 1px solid #511865;
+    color: #d0d0f8;
+    background-color: #755096;
+    background: linear-gradient(to left, #7671c7, #825da4);
+    text-shadow: 1px 1px 2px indigo;
+}
+
+#myTable_wrapper button {
+    background: radial-gradient( #6963BB, #825da4);
+    color: #b5b5e8 !important;
+    border-radius: 20px;
+    text-shadow: 1px 1px 2px indigo;
+}
+
+table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
+    border-top: 1px solid #211668 !important;
+}
+
+#myTable_wrapper button:hover {
+    filter: brightness(120%);
+}
+
+.dt-paging-button {
+    color: #b5b5e8 !important;
+    text-shadow: 1px 1px 2px #825da4;
+}
+
+.no-data {
+    color: #514695;
+    mix-blend-mode: multiply;
+}
+
+.pop-2 {
+    color: orangered;
+}
