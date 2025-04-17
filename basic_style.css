@@ -30,14 +30,14 @@ h1.fancy-title {
 }
 
 .monospace {
-    font-family: "Sono", monospace;
+    font-family: "Sono", "Cascadia Mono", "Menlo", monospace;
     font-optical-sizing: auto;
     font-weight: 300;
     font-style: normal;
 }
 
 input, textarea, fieldset, legend, datalist, output, option, optgroup {
-    font-family: "Sono", monospace !important;
+    font-family: "Sono", Courier, monospace !important;
     font-optical-sizing: auto;
     font-weight: 250;
     font-style: normal;
