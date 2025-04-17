@@ -93,3 +93,7 @@ iframe {
     text-align: right;
     font-size: 1.2em;
 }
+
+.dt-type-numeric .sorting_1 a {
+    color: purple;
+}
