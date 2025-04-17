@@ -190,7 +190,41 @@ $(document).ready(function () {
                                     } },
                             ]
                         });
+                        new DataTable('#gradients', {
+                            data: output3,
+                            select: true,
+                            scrollX: true,
+                            fixedHeader: true,
+                            scrollCollapse: true,
+                            columns: [
+                                {
+                                    title: 'Asset ID', data: 'Asset Link', render: function (data) {
+                                        return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"
+                                    }
+                                },
+                                { title: 'Asset Title', data: 'Asset Title ' },
+                                {
+                                    title: 'Other Types', data: 'Other Types', render: function (data) {
+                                        var taggedCol1Text = data;
 
+                                        var split1 = taggedCol1Text.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                            ]
+                        });
                         new DataTable('#three-d', {
                             data: output3,
                             select: true,
@@ -384,7 +418,7 @@ $(document).ready(function () {
     <div id="tabs">
         <ul>
             <li><a href="#Brushes">Brushes</a></li>
-            <li>Gradients</li>
+            <li><a href="#Grads">Gradients</a></li>
             <li><a href="#3D">3D</a></li>
             <li><a href=" #AA">Auto-Actions</a></li>
             <li><a href=" #Tools">Tools</a></li>
