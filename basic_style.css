@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&display=swap');
 body {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif
 }
@@ -30,6 +29,19 @@ h1.fancy-title {
     font-style: normal;
 }
 
+.monospace {
+    font-family: "Sono", monospace;
+    font-optical-sizing: auto;
+    font-weight: 300;
+    font-style: normal;
+}
+
+input, textarea, fieldset, legend, datalist, output, option, optgroup {
+    font-family: "Sono", monospace !important;
+    font-optical-sizing: auto;
+    font-weight: 250;
+    font-style: normal;
+}
 
 
 
