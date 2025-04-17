@@ -88,3 +88,8 @@ iframe {
     width: 100%;
     height: 100%;
 }
+
+.visit {
+    text-align: right;
+    font-size: 1.2em;
+}
