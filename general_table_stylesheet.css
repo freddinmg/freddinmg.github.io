@@ -23,6 +23,7 @@ body {
 
 h1 {
     font-family: 'Bangers' ,'LetterOMatic!','Marker Felt', 'Impact', sans-serif;
+    font-weight: 400;
     }
 
 #loading-text {
