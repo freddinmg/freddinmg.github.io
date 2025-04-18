@@ -1,5 +1,7 @@
 /* Note: ODD increments are lighter while EVEN is darker; the rows are offset by 1, which is because of the top row. */
-
+ul.nav a, ul.nav-2 a {
+    color: #7DA5E0;
+}
 
 table.dataTable thead > tr > th.dt-orderable-asc {
     text-shadow: 1px 1px 2px rgba(47, 16, 99, 0.5);
