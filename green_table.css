@@ -1,0 +1,147 @@
+/* Note: ODD increments are lighter while EVEN is darker; the rows are offset by 1, which is because of the top row. */
+
+
+table.dataTable thead > tr > th.dt-orderable-asc {
+    text-shadow: 1px 1px 2px rgba(49, 0, 0, 0.5);
+}
+
+
+table.dataTable thead tr > .dtfc-fixed-start {
+    background-color: #666019;
+    color: lightsalmon;
+    text-shadow: 1px 1px 2px rgba(49, 0, 0, 0.5);
+}
+
+/* Firebrick: rgba(178, 34, 34, 0.5) */
+
+tr:nth-child(odd) {
+    background-color: #B7AD4C;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 {
+    mix-blend-mode: color-burn;
+}
+
+table.dataTable.display > tbody > tr:nth-child(odd) > .sorting_1 {
+    mix-blend-mode: multiply;
+}
+
+/* Blue tag li elements, on the lighter stripes.*/
+tr:nth-child(odd) .sorting_1:has(>.tag-box) {
+    mix-blend-mode: exclusion !important;
+}
+
+tr:nth-child(odd) .sorting_1 .no-data {
+    color: black !important;
+    mix-blend-mode: multiply;
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(odd) > *, table.dataTable.display > tbody > tr:nth-child(odd) > * {
+    box-shadow: inset 0 0 0 9999px rgba(181, 204, 126, 0.05) !important;
+}
+
+/* Checkmarks and Xs for true/false */
+tr:nth-child(even) .sorting_1 .pop {
+    filter: brightness(25%) contrast(1.35);
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(even) > *, table.dataTable.display > tbody > tr:hover {
+    filter: brightness(110%);
+}
+
+.dt-column-title {
+    color: #4D480B;
+}
+
+.dtfc-fixed-start .dt-column-title {
+    color: #0C262B;
+}
+
+table.dataTable tbody tr:nth-child(odd) > .dtfc-fixed-start {
+    background-color: #B7AD4C;
+}
+
+table.dataTable tbody tr:nth-child(even) > .dtfc-fixed-start {
+    background-color:  #B5CC7E;
+}
+
+table.dataTable tbody tr > .dtfc-fixed-start {
+    border-left: none;
+}
+
+.ui-progressbar-value {
+    background: #79BDAB !important;
+}
+
+/* Where the asset ID links are */
+table.dataTable.display > tbody > tr a {
+    color: white;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 a {
+    color: #800020;
+}
+
+#myTable tr {
+    background-color: #F9F5B9;
+}
+
+    #myTable tr td:nth-child(3) {
+        border-right: 1px solid rgb(255, 215, 0.4);
+    }
+
+table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
+    border-bottom-width: 3px;
+    border-bottom-style: double;
+    border-bottom-color: rgb(255, 215, 0.4) !important;
+}
+
+/*fuschia is #FF00FF, #9932CC is darkorchid */
+.tag-box li {
+    border: 1px solid #79BDAB;
+    background-color: #c4cc7e;
+    background: linear-gradient(to left, #D9D049, #c4cc7e);
+    text-shadow: 1px 1px 2px #AE7371;
+    color: #FFFFF0;
+}
+
+#myTable_wrapper button {
+    border: 1px solid #79BDAB;
+    background: radial-gradient( #D9D049, #c4cc7e);
+    color: navajowhite !important;
+    border-radius: 20px;
+    text-shadow: 1px 1px 2px #AE7371;
+}
+
+
+
+table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
+    border-top: 1px solid rgb(255, 215, 0.4) !important;
+}
+
+#myTable_wrapper button:hover {
+    filter: brightness(120%);
+}
+
+.dt-paging-button {
+    color: navajowhite !important;
+    text-shadow: 1px 1px 2px #AE7371;
+}
+
+.no-data {
+    color: #831717;
+    mix-blend-mode: multiply;
+}
+
+/* For "notes" marker */
+.pop-2 {
+    color: red;
+}
+
+/* Change "if" statement's font color in the callbacks for the data table if this color is changed! */
+.asset-span {
+    color: saddlebrown;
+}
+/*
+    #FFB38E
+*/

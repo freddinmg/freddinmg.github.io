@@ -1,0 +1,150 @@
+/* Note: ODD increments are lighter while EVEN is darker; the rows are offset by 1, which is because of the top row. */
+
+
+table.dataTable thead > tr > th.dt-orderable-asc {
+    text-shadow: 1px 1px 2px rgba(47, 16, 99, 0.5);
+}
+
+
+table.dataTable thead tr > .dtfc-fixed-start {
+    background-color: #2F2090;
+    color: #7DA5E0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Firebrick: rgba(178, 34, 34, 0.5) */
+
+tr:nth-child(odd) {
+    background-color: #7DA5E0;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 {
+    mix-blend-mode: exclusion;
+}
+
+table.dataTable.display > tbody > tr:nth-child(odd) > .sorting_1 {
+    mix-blend-mode: multiply;
+}
+
+/* Blue tag li elements, on the lighter stripes.*/
+tr:nth-child(odd) .sorting_1:has(>.tag-box) {
+    mix-blend-mode: exclusion !important;
+}
+
+tr:nth-child(odd) .sorting_1 .no-data {
+    color: black !important;
+    mix-blend-mode: multiply;
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(odd) > *, table.dataTable.display > tbody > tr:nth-child(odd) > * {
+    box-shadow: inset 0 0 0 9999px rgba(186, 226, 239, 0.1) !important;
+}
+
+/* Checkmarks and Xs for true/false */
+tr:nth-child(even) .sorting_1 .pop {
+    filter: brightness(25%) contrast(1.35);
+}
+
+table.dataTable.stripe > tbody > tr:nth-child(even) > *, table.dataTable.display > tbody > tr:hover {
+    filter: brightness(102%);
+}
+
+.dt-column-title {
+    color: #2F2090;
+}
+
+.dtfc-fixed-start .dt-column-title {
+    color: #7DA5E0;
+}
+
+table.dataTable tbody tr:nth-child(odd) > .dtfc-fixed-start {
+    background-color: #7DA5E0;
+}
+
+table.dataTable tbody tr:nth-child(even) > .dtfc-fixed-start {
+    background-color: #4848B6;
+}
+
+table.dataTable tbody tr > .dtfc-fixed-start {
+    border-left: none;
+}
+
+.ui-progressbar-value {
+    background: skyblue !important;
+}
+
+/* Where the asset ID links are */
+table.dataTable.display > tbody > tr a {
+    color: aqua;
+}
+
+table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 a {
+    color: black;
+}
+
+#myTable tr {
+    background-color: #EFFFF7;
+}
+
+    #myTable tr td:nth-child(3) {
+        border-right: 1px solid rgba(47, 16, 99, 0.4);
+    }
+
+table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
+    border-bottom-width: 3px;
+    border-bottom-style: double;
+    border-bottom-color: rgba(47, 16, 99, 0.4) !important;
+}
+
+/*fuschia is #FF00FF, #9932CC is darkorchid */
+.tag-box li {
+    border: 1px solid #2F2090;
+    background-color: #7DAAEB;
+    background: linear-gradient(to left, #BAE2F5, #7DAAEB);
+    text-shadow: 1px 1px 2px navy;
+    color: white;
+}
+
+#myTable_wrapper button {
+    background: radial-gradient( #BAE2F5, #7DAAEB);
+    color: white !important;
+    border-radius: 20px;
+    text-shadow: 1px 1px 2px navy;
+}
+
+
+
+table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
+    border-top: 1px dotted rgba(47, 16, 99, 0.3) !important;
+}
+
+#myTable_wrapper button:hover {
+    filter: brightness(120%);
+}
+
+.dt-paging-button {
+    color: white !important;
+    text-shadow: 1px 1px 2px navy;
+}
+
+.no-data {
+    color: purple;
+    mix-blend-mode: multiply;
+}
+
+/* For "notes" marker */
+.pop-2 {
+    color: orange;
+}
+
+/* Change "if" statement's font color in the callbacks for the data table if this color is changed! */
+table.dataTable tbody tr:nth-child(odd) .asset-span {
+    color: navy;
+}
+
+table.dataTable tbody tr:nth-child(even) .asset-span {
+    color: black;
+}
+/*
+    #FFB38E
+*/

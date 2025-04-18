@@ -1,27 +1,21 @@
+/* Note: ODD increments are lighter while EVEN is darker; the rows are offset by 1, which is because of the top row. */
+
+
 table.dataTable thead > tr > th.dt-orderable-asc {
-    text-shadow: 1px 1px 2px rgba(75, 0, 130, 0.5);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
-.dt-column-title {
-    color: #cfcbff;
-}
+
 
 table.dataTable thead tr > .dtfc-fixed-start {
-    background-color: #514695;
-    color: white;
-    text-shadow: 1px 1px 2px rgba(75, 0, 130, 0.5);
+    background-color: #692C6C;
+    color: #BD5983;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
-.asset-span {
-    color: #cfcbff;
-}
-
-.dtfc-fixed-start .dt-column-title {
-    color: white;
-}
-
+/* Firebrick: rgba(178, 34, 34, 0.5)   rgba(146, 51, 102, 0.5)*/
 
 tr:nth-child(odd) {
-    background-color: #6963BB;
+    background-color: #923366;
 }
 
 table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 {
@@ -32,7 +26,7 @@ table.dataTable.display > tbody > tr:nth-child(odd) > .sorting_1 {
     mix-blend-mode: multiply;
 }
 
-/* orangered tag li elements, on the lighter stripes.*/
+/* Blue tag li elements, on the lighter stripes.*/
 tr:nth-child(odd) .sorting_1:has(>.tag-box) {
     mix-blend-mode: exclusion !important;
 }
@@ -43,7 +37,7 @@ tr:nth-child(odd) .sorting_1 .no-data {
 }
 
 table.dataTable.stripe > tbody > tr:nth-child(odd) > *, table.dataTable.display > tbody > tr:nth-child(odd) > * {
-    box-shadow: inset 0 0 0 9999px rgba(154, 150, 187, 0.05) !important;
+    box-shadow: inset 0 0 0 9999px rgba(221, 144, 187, 0.1) !important;
 }
 
 /* Checkmarks and Xs for true/false */
@@ -55,12 +49,20 @@ table.dataTable.stripe > tbody > tr:nth-child(even) > *, table.dataTable.display
     filter: brightness(110%);
 }
 
+.dt-column-title {
+    color: pink;
+}
+
+.dtfc-fixed-start .dt-column-title {
+    color: #da70b3;
+}
+
 table.dataTable tbody tr:nth-child(odd) > .dtfc-fixed-start {
-    background-color: #6963BB;
+    background-color: #923366;
 }
 
 table.dataTable tbody tr:nth-child(even) > .dtfc-fixed-start {
-    background-color: #5049AC;
+    background-color: #BD5983;
 }
 
 table.dataTable tbody tr > .dtfc-fixed-start {
@@ -68,50 +70,52 @@ table.dataTable tbody tr > .dtfc-fixed-start {
 }
 
 .ui-progressbar-value {
-    background: #5D3FD3 !important;
+    background: #AA336A !important;
 }
 
 /* Where the asset ID links are */
 table.dataTable.display > tbody > tr a {
-    color: lightskyblue;
+    color: navajowhite;
 }
 
 table.dataTable.display > tbody > tr:nth-child(even) > .sorting_1 a {
-    color: indigo;
+    color: #800020;
 }
 
 #myTable tr {
-    background-color: #E5E5FD;
+    background-color: #FFEBF5;
 }
 
-#myTable tr td:nth-child(3) {
-    border-right: 1px solid rgba(108, 22, 138, 0.4); 
-}
+    #myTable tr td:nth-child(3) {
+        border-right: 1px solid rgb(170, 51, 106, 0.4);
+    }
 
 table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
     border-bottom-width: 2px;
-    border-bottom-style: ridge;
-    border-bottom-color: rgba(108, 22, 138, 0.4) !important;
+    border-bottom-style: outset;
+    border-bottom-color: rgb(170, 51, 106, 0.4) !important;
 }
 
+/*fuschia is #FF00FF, #9932CC is darkorchid */
 .tag-box li {
-    border: 1px inset #511865;
-    color: #d0d0f8;
-    background-color: #755096;
-    background: linear-gradient(to left, #7671c7, #825da4);
+    border: 1px inset #c02b56;
+    background-color: #BD5983;
+    background: linear-gradient(to left, #BD5983, #923366);
     text-shadow: 1px 1px 2px indigo;
+    color: #F3CFC6;
 }
 
 #myTable_wrapper button {
-    background: radial-gradient( #6963BB, #825da4);
-    color: #b5b5e8 !important;
-    border: 1px groove #511865;
+    background: radial-gradient( #BD5983, #923366);
+    color: #F3CFC6 !important;
     border-radius: 20px;
     text-shadow: 1px 1px 2px indigo;
 }
 
+
+
 table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
-    border-top: 1px solid #211668 !important;
+    border-top: 1px solid rgb(170, 51, 106, 0.4) !important;
 }
 
 #myTable_wrapper button:hover {
@@ -119,15 +123,24 @@ table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > t
 }
 
 .dt-paging-button {
-    color: #b5b5e8 !important;
-    text-shadow: 1px 1px 2px #825da4;
+    color: pink !important;
+    text-shadow: 1px 1px 2px indigo;
 }
 
 .no-data {
-    color: #514695;
+    color: #831717;
     mix-blend-mode: multiply;
 }
 
+/* For "notes" marker */
 .pop-2 {
-    color: orangered;
+    color: #6DCC99;
 }
+
+/* Change "if" statement's font color in the callbacks for the data table if this color is changed! */
+.asset-span {
+    color: pink;
+}
+/*
+    #FFB38E
+*/
