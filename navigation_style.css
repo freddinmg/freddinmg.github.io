@@ -67,6 +67,10 @@ ul.nav-2 li::marker {
     display: none;
 }
 
+.nav-2:first-child{
+    list-style-type:none;
+}
+
 ul.nav a, ul.nav-2 a {
     color: mediumpurple;
 }
