@@ -63,7 +63,7 @@ ul.nav-2 li::marker {
 }
 
 .nav-2 li:first-of-type::marker {
-    list-style-type: none !important;
+    list-style: disc outside none;
     content: "" !important;
     display: none;
 }
