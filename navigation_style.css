@@ -68,6 +68,12 @@ ul.nav-2 li::marker {
     display: none;
 }
 
+ul:first-child::marker {
+    list-style: disc outside none;
+    content: "" !important;
+    display: none;
+}
+
 ul.nav a, ul.nav-2 a {
     color: mediumpurple;
 }
@@ -85,4 +91,37 @@ ul.nav a, ul.nav-2 a {
 
 h1 ~ .cut-off, h2 ~ .cut-off, h3 ~ .cut-off {
     margin-top: -25px;
+}
+
+.nav-list, #nav-list {
+    display: flex;
+    flex-direction:column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+}
+
+.nav-button {
+    text-align: center;
+}
+
+/* top | right | bottom | left */
+ul.nav-links {
+    display: none;
+    list-style-type: none;
+    padding: 6px 3px 3px 0;
+    margin-bottom: 3px;
+    position: absolute;
+    backdrop-filter: blur(7px);
+    top: 100px;
+}
+
+.nav-links li {
+    border-bottom: 1px solid gray;
+}
+
+details > ul {
+    list-style: disc outside none;
+    padding: 6px 3px 3px 0;
+    backdrop-filter: blur(7px);
 }
