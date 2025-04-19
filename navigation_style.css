@@ -68,7 +68,7 @@ ul.nav-2 li::marker {
     display: none;
 }
 
-ul:first-child::marker {
+ul li:first-child::marker {
     list-style: disc outside none;
     content: "" !important;
     display: none;
