@@ -64,6 +64,7 @@ ul.nav-2 li::marker {
 
 .nav-2 li:first-of-type::marker {
     list-style-type: none !important;
+    content: "" !important;
     display: none;
 }
 
