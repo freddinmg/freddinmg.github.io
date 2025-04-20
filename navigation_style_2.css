@@ -119,8 +119,8 @@ ul.nav-links {
     padding: 6px 3px 3px 0;
     margin-bottom: 3px;
     position: absolute;
-    background-color(255, 255, 255, 0.8);
-    backdrop-filter: blur(7px) opacity(20%);
+    background-color(255, 255, 255, 0.95);
+    backdrop-filter: blur(7px);
     top: 55px;
 }
 
