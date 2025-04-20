@@ -1,5 +1,5 @@
 /* Note: ODD increments are lighter while EVEN is darker; the rows are offset by 1, which is because of the top row. */
-ul.nav a, ul.nav-2 a {
+ul.nav a, ul.nav-2 a, .nav-button {
     color: #7DA5E0;
 }
 

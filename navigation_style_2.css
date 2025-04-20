@@ -119,7 +119,7 @@ ul.nav-links {
     padding: 6px 3px 3px 0;
     margin-bottom: 3px;
     position: absolute;
-    backdrop-filter: blur(7px);
+    backdrop-filter: blur(7px) brightness(105%);
     top: 55px;
 }
 
