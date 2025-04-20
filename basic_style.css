@@ -63,12 +63,13 @@ input, textarea, fieldset, legend, datalist, select, output, option, optgroup {
     display: inline-block;
 }
 
-#outer-links ul{
+#outer-links ul, .swirl-bullets{
     list-style-type: "꩜";
 }
 
-#outerlinks ul::marker {
+#outerlinks ul::marker, .swirl-bullets::marker {
     font-size: 1.2em;
+    padding: 3px;
 }
 
 h1 ~ #outer-links, h2 ~ #outer-links, h3 ~ #outer-links {
