@@ -104,7 +104,7 @@ hr.style-10 {
 }
 
 hr.style-10:after {
-    content: "&#xAA5C;" !important;
+    content: "\00AA5C" !important;
     display: inline-block! important;
     position: relative !important;
     top: -0.7em;
