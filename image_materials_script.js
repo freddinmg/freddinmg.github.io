@@ -1,4 +1,5 @@
 
+function findThumbnails() {
 $(".form-holder").fadeIn();
 
 var brushAsset;
@@ -143,3 +144,5 @@ $("#layers").on("change", function () {
 });
 
 //---------------------------------
+
+}

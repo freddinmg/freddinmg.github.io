@@ -11,29 +11,31 @@
 	<link href="basic_style.css" rel="stylesheet" />
 	<link href="navigation_style_2.css" rel="stylesheet" />
     <link href="material_catalogs.css" rel="stylesheet" />
-	<style>
-		#no-peeking {
-			display: none;
-		}
-	</style>
+<style>
+	#no-peeking {
+		display: none;
+	}
+</style>
 
-	<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"></script>
 
-	<script src="nav_script.js"></script>
+<script src="image_materials_script.js"></script>
 
-	<script src="https://fred-site.neocities.org/Javascript/Vanilla/json2html.js"></script>
+<script src="nav_script.js"></script>
+
+<script src="https://fred-site.neocities.org/Javascript/Vanilla/json2html.js"></script>
 
 
 
 
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.min.css" integrity="sha512-p/7j92gn7aB9tDnfPF70pYqrHofcWtimt2eA+yEe2+h74ur0vHO79yjrpF0s1K9d02R6gkpBmLdZwPaCiazPQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-	<script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/black/pace-theme-loading-bar.min.css" integrity="sha512-p/7j92gn7aB9tDnfPF70pYqrHofcWtimt2eA+yEe2+h74ur0vHO79yjrpF0s1K9d02R6gkpBmLdZwPaCiazPQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	
+<script>
 		Pace.options = {
 			startOnPageLoad: false,
 			restartOnPushState: true,
@@ -44,450 +46,261 @@
 			},
 			eventLag: true
 		};
-		
-
-		var dropTemplate =
-			{ "<>": "option", "value": "${assetNum}", "text": "${assetNum}" };
-
-		function getAssetByCode(data, number) {
-			return data.filter(
-				function (data) {
-					//Note the number of equals signs!
-					return data["Asset #"] == number;
-				}
-			);
-		}
-
-		function getAssetByCode2(data, number) {
-			return data.filter(
-				function (data) {
-					//Note the number of equals signs!
-					return data["assetNum"] == number;
-				}
-			);
-		}
-
-		var brush_url = "https://script.googleusercontent.com/macros/echo?user_content_key=WF5sBDjRX0CN5OqIM4DLQq27cs8KMRN40wJyaExwQSdznZ5bFcocKgcsCbNTfUuCdS0brOgt0PzHxOrZndGpXSb-7nzEfMjJm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCjSRaZ8mE7c0sBWe6R5aCOBbl5IF8cRIxRhM2rWrfi7IPG9NoAhHWYZBkio1TlqDYrf5fh4ASOdyMRWFz3EhDp0lZyfHJtu8g&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
-
-		var grad_url = "https://script.googleusercontent.com/macros/echo?user_content_key=T_-q_VDARcCTFl6tQ7F-pQrSzzSXrlldpwp95voXs_UdvxzqF7bLir-aRIIOIMVzdy9NKqHO6lWZcAWx7AtD2sBKhNajIDBSm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCaCmZCqkXrWGhkmZOmXqTyeJaB0Yhz-SFaE2tZsO7cwdPDVg1QM7_2JNcb5sykA8-IApzVQZcSO0wTYq5eFS5nCoPU8vdkyIdz9Jw9Md8uu&lib=MIW6qBvqXIqjC3iVw-qO25vMu5J5nTZwr";
-
-		var threeD_url = "https://script.googleusercontent.com/macros/echo?user_content_key=GdtdMIP1po9_aTO5hhVRkYbH2_5-RyeCEJPUWffj280vQjTvfzTyMI-XE49HuH9tarHludtA8fOZcAWx7AtD2p4Kv2OcBGYym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPq9DAUK72gCDC8YekjRRqta64EVpE2A1vEJ73QzFAlWrmbZJbBvCRNID0ylX4YRN0VIiSNjTGKRYNotFbYBjCH5J93WegpWQtz9Jw9Md8uu&lib=MQ1SgrCJYxh3g5Z_OzGTSYfMu5J5nTZwr";
-
-		var aa_url = "https://script.googleusercontent.com/macros/echo?user_content_key=srBDz0c57la3TWD4OPZnZHYD2VctfalPSTHAQmsIzfCyrAKmeiCu72R5LfHX0L1Vk3WfkM3RJoaZcAWx7AtD2jxfDeILsPYVm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFHlJqtdvGFkHs0Dsm55nyVeostxkZAVUeYo8AUSGMH8p4QGS7JJYUnmrY6x2jRqSFU2r3BQ2iY5HNHzn_bOaj3GYrXNT78wgA&lib=MAfIh9qlqUmcL72tHPVIk36WZ8rqdjnSl";
-
-		var tools_url = "https://script.googleusercontent.com/macros/echo?user_content_key=hH3usBQVgcHzEm_ZqZ75DT2yXacYk4W6vwe9W-Jao0WAJH22VkHMST4E0KoR5bOD__y3RqfaNwsitFSent6dRw9sOCpWwc0Lm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnADMbeTLmSXNWgCtGzTGSRBUfDjK5FyveNYyUeL-af2nWjNmOAPU675WAN9VxDaP18DKy-jytJMY537HyTAbp6QuzdndE6vXAg&lib=MEZl9WWSgkemPDPpbRt_xmaWZ8rqdjnSl";
-
-		var img_url = "https://script.googleusercontent.com/macros/echo?user_content_key=_HVS7L_8KZZ-jSSA5N5bRxLbNJL7_DXgwrvjKpTGBL_RCUN9Itsof93cefpOtBTBCmWZJ14OfJuZcAWx7AtD2jjvJfnKlEFsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnElwh6aTwffaB0DtO8ajS0c5UAPVPSrt4XWaX6Y0pxbXbx2CPOsjcdkXkab3sBDhGCtD6y_seu2GMzQ25wce9h5KgYGWmJEpBtz9Jw9Md8uu&lib=MS5VzwnD6gq-FPhyPh_bt0_Mu5J5nTZwr";
-
-		var layer_url = "https://script.googleusercontent.com/macros/echo?user_content_key=wrmiiOEYBtj2OOVDgM9jHSb1VqJp0x8vfIltF1HEeoyvPItQE4UfbY7FEDZRRswRriF0fdgEApeZcAWx7AtD2mvVT5O0khYvm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnImz0vocTWr0WN0jkoM-QxjMKYjfgHe6i_nucIl_hmhGhZxULnBZV_Rqb314OokX9jiGVqd4eYWHQHU2YZJnyUfjEZ9LGLhnsQ&lib=MEl3FosQXNnozvS5EmkfB66WZ8rqdjnSl";
-
-
-		let brushResponse;
-		let gradResponse;
-		let threeDResponse;
-		let autoAResponse;
-		let toolsResponse;
-		let imgMResponce;
-		let layerResponce;
-
-		let brushData;
-		let gradData;
-		let threeDData;
-		let autoAData;
-		let toolsData;
-		let imgMData;
-		let layerData;
-
-		let output1;
-		let output1a;
-
-		let output2
-		let output2a;
-
-		let output3;
-		let output3a;
-
-		let output4;
-		let output4a;
-
-		let output5;
-		let output5a;
-
-		let output6;
-		let output6a;
-
-		let output7;
-		let output7a;
-		
-		async function fetchDataSequentially() {
-
-			try {
-
-				const response1 = await fetch(brush_url);
-				brushResponse = await response1.json();
-				console.log(brushResponse);
-				Pace.restart();
-				const response2 = await fetch(grad_url);
-				gradResponse = await response2.json();
-				console.log(gradResponse);
-				Pace.restart();
-				const response3 = await fetch(threeD_url);
-				threeDResponse = await response3.json();
-				console.log(threeDResponse);
-				Pace.restart();
-				const response4 = await fetch(aa_url);
-				autoAResponse = await response4.json();
-				console.log(autoAResponse);
-				Pace.restart();
-				const response5 = await fetch(tools_url);
-				toolsResponse = await response5.json();
-				console.log(toolsResponse);
-				Pace.restart();
-				const response6 = await fetch(img_url);
-				imgMResponce = await response6.json();
-				console.log(imgMResponce);
-				Pace.restart();
-				const response7 = await fetch(layer_url);
-				layerResponce = await response7.json();
-				console.log(layerResponce);
-				Pace.restart();
-
-			} catch (error) {
-				console.error("Error:", error);
-			}
-
-		}
-		fetchDataSequentially().then(responce => {
-			Pace.restart();
-			brushData = brushResponse.data;
-			gradData = gradResponse.data;
-			threeDData = threeDResponse.data;
-			autoAData = autoAResponse.data;
-			toolsData = toolsResponse.data;
-			imgMData = imgMResponce.data;
-			layerData = layerResponce.data;
-
-			//allProms1 = [brushData, gradData, threeDData, autoAData, toolsData, imgMData, layerData];
-
-			//Pace.track(Promise.all(allProms1));
-			
-			output1 = brushData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output1);
-
-			output2 = gradData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output2);
-
-			output3 = threeDData.filter((item) => {
-				if (item["Asset Name"] == false) { return false } else { return true }
-			});
-			console.log(output3);
-
-			output4 = autoAData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output4);
-
-			output5 = toolsData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output5);
-
-			output6 = imgMData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output6);
-
-			output7 = layerData.filter((item) => {
-				if (item["Asset"] == false) { return false } else { return true }
-			});
-			console.log(output7);
-		})
-			.then(data => {
-				Pace.restart();
-				//idFData = fetchedData2["Asset #"];
-				output1a = output1.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-
-				output2a = output2.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-
-				output3a = output3.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset Name"],
-					picUrl: item.URL
-				}));
-				//console.log(output3a);
-
-				output4a = output4.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-
-				output5a = output5.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-
-				output6a = output6.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-
-				output7a = output7.map((item) => ({
-					assetNum: item["Asset #"],
-					asset: item["Asset"],
-					picUrl: item.URL
-				}));
-			})
-			.finally(function () {
-				//change reference locations: #d1 4x, #h1 2x, #i1 2x, varable numbers for code, asset, and assetName
-				Pace.restart();
-				$(document).ready(function () {
-					$("#no-peeking").show();
-					$("#thumbnail-search-panel").accordion();
-					$("#d1").json2html(output1a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code;
-					var asset;
-					var assetName;
-
-					code = $("#d1").val();
-					asset = getAssetByCode2(output1a, code)
-					document.getElementById('h1').innerHTML = asset[0].asset;
-					assetName = asset.Asset;
-					var imageString;
-					$('#i1 .image-box-inner').html("<img src='" + asset[0].picUrl + "'>");
-					//document.getElementById('i1').innerHTML = "<img src='" + asset[0].picUrl + "'>";
-					$("#d1").on("change", function () {
-						code = $("#d1").val();
-						asset = getAssetByCode2(output1a, code)
-						//Below: title of asset loaded in.
-						document.getElementById('h1').innerHTML = asset[0].asset;
-						assetName = asset.Asset;
-					});
-					console.log(code);
-					$("#id-submit").on('click', function () {
-						$('#i1 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i1').innerHTML = code;
-					});
-
-					//--------------------------------------------------------------------------------------------------
-					$("#d2").json2html(output2a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_2;
-					var asset_2;
-					var assetName_2;
-
-					code_2 = $("#d2").val();
-					asset_2 = getAssetByCode2(output2a, code_2)
-					document.getElementById('h2').innerHTML = asset_2[0].asset;
-					assetName_2 = asset_2.Asset;
-					var imageString_2;
-					$('#i2 .image-box-inner').html("<img src='" + asset_2[0].picUrl + "'>");
-					//document.getElementById('i1').innerHTML = "<img src='" + asset_2[0].picUrl + "'>";
-					$("#d2").on("change", function () {
-						code_2 = $("#d2").val();
-						asset_2 = getAssetByCode2(output2a, code_2)
-						//Below: title of asset loaded in.
-						document.getElementById('h2').innerHTML = asset_2[0].asset;
-						assetName_2 = asset_2.Asset;
-					});
-					console.log(code);
-					$("#id-submit-2").on('click', function () {
-						$('#i2 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_2[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i1').innerHTML = code;
-					});
-					//--------------------------------------------------------------------------------------------------
-					$("#d3").json2html(output3a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_3;
-					var asset_3;
-					var assetName_3;
-
-					code_3 = $("#d3").val();
-					//console.log(code_3);
-					asset_3 = getAssetByCode2(output3a, code_3);
-					console.log(asset_3);
-					document.getElementById('h3').innerHTML = asset_3[0].asset;
-					assetName_3 = asset_3.asset;
-					var imageString;
-					$('#i3 .image-box-inner').html("<img src='" + asset_3[0].picUrl + "'>");
-					console.log(asset_3[0].picUrl);
-					//document.getElementById('i3').innerHTML = "<img src='" + asset_3[0].picUrl + "'>";
-					$("#d3").on("change", function () {
-						code_3 = $("#d3").val();
-						//console.log(code_3);
-						asset_3 = getAssetByCode2(output3a, code_3);
-						//console.log(asset_3);
-						//Below: title of asset loaded in.
-						document.getElementById('h3').innerHTML = asset_3[0].asset;
-						assetName_3 = asset_3.asset;
-						//console.log(asset_3[0].picUrl);
-					});
-					console.log(code_3);
-					$("#id-submit-3").on('click', function () {
-						$('#i3 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_3[0].picUrl + "'>").fadeIn(400);
-							//console.log(asset_3[0].picUrl);
-						});
-
-						//document.getElementById('i3').innerHTML = code_3;
-					});
-					//--------------------------------------------------------------------------------------------------
-					$("#d4").json2html(output4a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_4;
-					var asset_4;
-					var assetName_4;
-
-					code_4 = $("#d4").val();
-					asset_4 = getAssetByCode2(output4a, code_4)
-					document.getElementById('h4').innerHTML = asset_4[0].asset;
-					assetName_4 = asset_4.Asset;
-					var imageString;
-					$('#i4 .image-box-inner').html("<img src='" + asset_4[0].picUrl + "'>");
-					//document.getElementById('i4').innerHTML = "<img src='" + asset_4[0].picUrl + "'>";
-					$("#d4").on("change", function () {
-						code_4 = $("#d4").val();
-						asset_4 = getAssetByCode2(output4a, code_4)
-						//Below: title of asset loaded in.
-						document.getElementById('h4').innerHTML = asset_4[0].asset;
-						assetName_4 = asset_4.Asset;
-					});
-					console.log(code_4);
-					$("#id-submit-4").on('click', function () {
-						$('#i4 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_4[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i4').innerHTML = code_4;
-					})
-					//--------------------------------------------------------------------------------------------------
-
-					$("#d5").json2html(output5a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_5;
-					var asset_5;
-					var assetName_5;
-
-					code_5 = $("#d5").val();
-					asset_5 = getAssetByCode2(output5a, code_5)
-					document.getElementById('h5').innerHTML = asset_5[0].asset;
-					assetName_5 = asset_5.Asset;
-					var imageString;
-					$('#i5 .image-box-inner').html("<img src='" + asset_5[0].picUrl + "'>");
-					//document.getElementById('i5').innerHTML = "<img src='" + asset_5[0].picUrl + "'>";
-					$("#d5").on("change", function () {
-						code_5 = $("#d5").val();
-						asset_5 = getAssetByCode2(output5a, code_5)
-						//Below: title of asset loaded in.
-						document.getElementById('h5').innerHTML = asset_5[0].asset;
-						assetName_5 = asset_5.Asset;
-					});
-					console.log(code_5);
-					$("#id-submit-5").on('click', function () {
-						$('#i5 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_5[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i5').innerHTML = code_5;
-					})
-
-
-					//--------------------------------------------------------------------------------------------------
-
-					$("#d6").json2html(output6a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_6;
-					var asset_6;
-					var assetName_6;
-
-					code_6 = $("#d6").val();
-					asset_6 = getAssetByCode2(output6a, code_6)
-					document.getElementById('h6').innerHTML = asset_6[0].asset;
-					assetName_6 = asset_6.Asset;
-					var imageString;
-					$('#i6 .image-box-inner').html("<img src='" + asset_6[0].picUrl + "'>");
-					//document.getElementById('i6').innerHTML = "<img src='" + asset_6[0].picUrl + "'>";
-					$("#d6").on("change", function () {
-						code_6 = $("#d6").val();
-						asset_6 = getAssetByCode2(output6a, code_6)
-						//Below: title of asset loaded in.
-						document.getElementById('h6').innerHTML = asset_6[0].asset;
-						assetName_6 = asset_6.Asset;
-					});
-					console.log(code_6);
-					$("#id-submit-6").on('click', function () {
-						$('#i6 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_6[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i6').innerHTML = code_6;
-					})
-
-
-					//--------------------------------------------------------------------------------------------------
-
-					$("#d7").json2html(output7a, dropTemplate);
-					$(".form-holder").fadeIn();
-					$('select option').addClass('ui-menu-item-wrapper');
-					var code_7;
-					var asset_7;
-					var assetName_7;
-
-					code_7 = $("#d7").val();
-					asset_7 = getAssetByCode2(output7a, code_7)
-					document.getElementById('h7').innerHTML = asset_7[0].asset;
-					assetName_7 = asset_7.Asset;
-					var imageString;
-					$('#i7 .image-box-inner').html("<img src='" + asset_7[0].picUrl + "'>");
-					//document.getElementById('i7').innerHTML = "<img src='" + asset_7[0].picUrl + "'>";
-					$("#d7").on("change", function () {
-						code_7 = $("#d7").val();
-						asset_7 = getAssetByCode2(output7a, code_7)
-						//Below: title of asset loaded in.
-						document.getElementById('h7').innerHTML = asset_7[0].asset;
-						assetName_7 = asset_7.Asset;
-					});
-					console.log(code_7);
-					$("#id-submit-7").on('click', function () {
-						$('#i7 .image-box-inner').fadeOut(400, function () {
-							$(this).html("<img src='" + asset_7[0].picUrl + "'>").fadeIn(400);
-						});
-
-						//document.getElementById('i7').innerHTML = code_7;
-					})
-
-					//--------------------------------------------------------------------------------------------------
-				})
-
-			});
 	</script>
+<script>
+
+var brush_url = "https://script.googleusercontent.com/macros/echo?user_content_key=WF5sBDjRX0CN5OqIM4DLQq27cs8KMRN40wJyaExwQSdznZ5bFcocKgcsCbNTfUuCdS0brOgt0PzHxOrZndGpXSb-7nzEfMjJm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCjSRaZ8mE7c0sBWe6R5aCOBbl5IF8cRIxRhM2rWrfi7IPG9NoAhHWYZBkio1TlqDYrf5fh4ASOdyMRWFz3EhDp0lZyfHJtu8g&lib=MC5WaxmiKxg5CBpJhZU7rCaWZ8rqdjnSl";
+
+var grad_url = "https://script.googleusercontent.com/macros/echo?user_content_key=T_-q_VDARcCTFl6tQ7F-pQrSzzSXrlldpwp95voXs_UdvxzqF7bLir-aRIIOIMVzdy9NKqHO6lWZcAWx7AtD2sBKhNajIDBSm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnCaCmZCqkXrWGhkmZOmXqTyeJaB0Yhz-SFaE2tZsO7cwdPDVg1QM7_2JNcb5sykA8-IApzVQZcSO0wTYq5eFS5nCoPU8vdkyIdz9Jw9Md8uu&lib=MIW6qBvqXIqjC3iVw-qO25vMu5J5nTZwr";
+
+var threeD_url = "https://script.googleusercontent.com/macros/echo?user_content_key=GdtdMIP1po9_aTO5hhVRkYbH2_5-RyeCEJPUWffj280vQjTvfzTyMI-XE49HuH9tarHludtA8fOZcAWx7AtD2p4Kv2OcBGYym5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnPq9DAUK72gCDC8YekjRRqta64EVpE2A1vEJ73QzFAlWrmbZJbBvCRNID0ylX4YRN0VIiSNjTGKRYNotFbYBjCH5J93WegpWQtz9Jw9Md8uu&lib=MQ1SgrCJYxh3g5Z_OzGTSYfMu5J5nTZwr";
+
+var aa_url = "https://script.googleusercontent.com/macros/echo?user_content_key=srBDz0c57la3TWD4OPZnZHYD2VctfalPSTHAQmsIzfCyrAKmeiCu72R5LfHX0L1Vk3WfkM3RJoaZcAWx7AtD2jxfDeILsPYVm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnFHlJqtdvGFkHs0Dsm55nyVeostxkZAVUeYo8AUSGMH8p4QGS7JJYUnmrY6x2jRqSFU2r3BQ2iY5HNHzn_bOaj3GYrXNT78wgA&lib=MAfIh9qlqUmcL72tHPVIk36WZ8rqdjnSl";
+
+var tools_url = "https://script.googleusercontent.com/macros/echo?user_content_key=hH3usBQVgcHzEm_ZqZ75DT2yXacYk4W6vwe9W-Jao0WAJH22VkHMST4E0KoR5bOD__y3RqfaNwsitFSent6dRw9sOCpWwc0Lm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnADMbeTLmSXNWgCtGzTGSRBUfDjK5FyveNYyUeL-af2nWjNmOAPU675WAN9VxDaP18DKy-jytJMY537HyTAbp6QuzdndE6vXAg&lib=MEZl9WWSgkemPDPpbRt_xmaWZ8rqdjnSl";
+
+var img_url = "https://script.googleusercontent.com/macros/echo?user_content_key=_HVS7L_8KZZ-jSSA5N5bRxLbNJL7_DXgwrvjKpTGBL_RCUN9Itsof93cefpOtBTBCmWZJ14OfJuZcAWx7AtD2jjvJfnKlEFsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnElwh6aTwffaB0DtO8ajS0c5UAPVPSrt4XWaX6Y0pxbXbx2CPOsjcdkXkab3sBDhGCtD6y_seu2GMzQ25wce9h5KgYGWmJEpBtz9Jw9Md8uu&lib=MS5VzwnD6gq-FPhyPh_bt0_Mu5J5nTZwr";
+
+var layer_url = "https://script.googleusercontent.com/macros/echo?user_content_key=wrmiiOEYBtj2OOVDgM9jHSb1VqJp0x8vfIltF1HEeoyvPItQE4UfbY7FEDZRRswRriF0fdgEApeZcAWx7AtD2mvVT5O0khYvm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnImz0vocTWr0WN0jkoM-QxjMKYjfgHe6i_nucIl_hmhGhZxULnBZV_Rqb314OokX9jiGVqd4eYWHQHU2YZJnyUfjEZ9LGLhnsQ&lib=MEl3FosQXNnozvS5EmkfB66WZ8rqdjnSl";
+</script>
+
+<script>
+
+let brushResponse;
+let gradResponse;
+let threeDResponse;
+let autoAResponse;
+let toolsResponse;
+let imgMResponce;
+let layerResponce;
+
+let brushData;
+let gradData;
+let threeDData;
+let autoAData;
+let toolsData;
+let imgMData;
+let layerData;
+
+let output1;
+let output2
+let output3;
+let output4;
+let output5;
+let output6;
+let output7;
+//----------------------------------------------------------------------------------
+
+
+function getAssetByCode(data, number) {
+	return data.filter(
+		function (data) {
+			//Note the number of equals signs!
+			return data["Asset #"] == number;
+		}
+	);
+}
+
+function getAssetByCode2(data, number) {
+	return data.filter(
+		function (data) {
+			//Note the number of equals signs!
+			return data["assetNum"] == number;
+		}
+	);
+}
+
+async function fetchDataSequentially() {
+	try {
+		const response1 = await fetch(brush_url);
+		fetchedData1A = await response1.json();
+		console.log("brush data:");
+		console.log(fetchedData1A);
+		Pace.restart();
+
+		const response2 = await fetch(grad_url);
+		fetchedData2A = await response2.json();
+		console.log("gradient data:");
+		console.log(fetchedData2A);
+		Pace.restart();
+
+		const response3 = await fetch(threeD_url);
+		fetchedData3A = await response3.json();
+		console.log("3D data:");
+		console.log(fetchedData3A);
+		Pace.restart();
+
+		const response4 = await fetch(aa_url);
+		fetchedData4A = await response4.json();
+		console.log("auto-action data:");
+		console.log(fetchedData4A);
+		Pace.restart();
+		const response5 = await fetch(tools_url);
+		fetchedData5A = await response5.json();
+		console.log("tool data:");
+		console.log(fetchedData5A);
+		Pace.restart();
+
+		const response6 = await fetch(img_url);
+		fetchedData6A = await response6.json();
+		console.log("image material data:");
+		console.log(fetchedData6A);
+		Pace.restart();
+
+		const response7 = await fetch(layer_url);
+		fetchedData7A = await response7.json();
+		console.log("layer data:");
+		console.log(fetchedData7A);
+
+
+	} catch (error) {
+		console.error("Error:", error);
+	}
+
+}
+
+fetchDataSequentially()
+	.then(response => {
+		Pace.restart();
+		fetchedData1B = fetchedData1A.data;
+		fetchedData1C = fetchedData1B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData2B = fetchedData2A.data;
+		fetchedData2C = fetchedData2B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData3B = fetchedData3A.data;
+		fetchedData3C = fetchedData3B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData4B = fetchedData4A.data;
+		fetchedData4C = fetchedData4B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData5B = fetchedData5A.data;
+		fetchedData5C = fetchedData5B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData6B = fetchedData6A.data;
+		fetchedData6C = fetchedData6B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		fetchedData7B = fetchedData7A.data;
+		fetchedData7C = fetchedData7B.filter((item) => {
+			if (item["Asset"] == false) { return false } else { return true }
+		});
+		//idFData = fetchedData2["Asset #"];
+
+	}).then(data => {
+		Pace.restart();
+		fetchedData1D = fetchedData1C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData1D.forEach(obj => {
+			fetchedData1E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings1 = fetchedData1E.map(value => value.toString());
+		//------------------------------------------
+
+		fetchedData2D = fetchedData2C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData2D.forEach(obj => {
+			fetchedData2E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings2 = fetchedData2E.map(value => value.toString());
+		console.log(fetchedData2D);
+		console.log(fetchedData2E);
+		console.log(fetchedStrings2);
+		//------------------------------------------
+
+		fetchedData3D = fetchedData3C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset Name"],
+			picUrl: item.URL
+		}));
+
+		fetchedData3D.forEach(obj => {
+			fetchedData3E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings3 = fetchedData3E.map(value => value.toString());
+		//------------------------------------------
+
+		fetchedData4D = fetchedData4C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData4D.forEach(obj => {
+			fetchedData4E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings4 = fetchedData4E.map(value => value.toString());
+		//------------------------------------------
+
+		fetchedData5D = fetchedData5C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData5D.forEach(obj => {
+			fetchedData5E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings5 = fetchedData5E.map(value => value.toString());
+		//------------------------------------------
+
+		fetchedData6D = fetchedData6C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData6D.forEach(obj => {
+			fetchedData6E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings6 = fetchedData6E.map(value => value.toString());
+		//------------------------------------------
+
+		fetchedData7D = fetchedData7C.map((item) => ({
+			assetNum: item["Asset #"],
+			asset: item["Asset"],
+			picUrl: item.URL
+		}));
+
+		fetchedData7D.forEach(obj => {
+			fetchedData7E.push(obj.assetNum); // Extracting the 'number' property from each object
+		});
+		fetchedStrings7 = fetchedData7E.map(value => value.toString());
+		//------------------------------------------
+
+	}).then(function () {
+		//console.log("fetchedData2");
+		//console.log(fetchedData2);
+		console.log("fetchedData1D");
+		console.log(fetchedData1D);
+		console.log("to string array:");
+		console.log(fetchedStrings1);
+		Pace.restart();
+	})
+	.finally(function () {
+
+		$(document).ready(function () {
+			$("#no-peeking").show();
+			$("#thumbnail-search-panel").accordion();
+			findThumbnails();
+		});
+
+	});
+
+</script>
 
 </head>
 <body>
@@ -540,6 +353,7 @@
     <p class="visit monospace">[<a href="material_catalogs_info.html" target="_blank">Visit the information page in a new tab here.</a>]</p>
 	<p>This page will soon be revised, as I've noticed now that the material images options aren't in numerical order, and you can't type in the input directly. Sorry for how absolutely obnoxious this search function is.</p>
 	<p> Please wait for everything to load. It'll take a minute...</p>
+	
 	<div id="no-peeking">
 
 		<div id="thumbnail-search-panel">
@@ -551,16 +365,19 @@
 							<h1 id="h1"></h1>
 						</div>
 						<div id="f1" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d1"></select><input id="id-submit" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="brushes">Brushes: </label>
+								<input id="brushes">
+							</div>
 						</div>
 					</div>
-
-					<div id="i1" class="ui-state-default image-box">
+	
+					<div id="i1" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>Gradients</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -569,15 +386,18 @@
 							<h1 id="h2"></h1>
 						</div>
 						<div id="f2" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d2"></select><input id="id-submit-2" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="grads">Gradients: </label>
+								<input id="grads">
+							</div>
 						</div>
 					</div>
-					<div id="i2" class="ui-state-default image-box">
+					<div id="i2" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>3D</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -586,15 +406,18 @@
 							<h1 id="h3"></h1>
 						</div>
 						<div id="f3" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d3"></select><input id="id-submit-3" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="three-d">3D: </label>
+								<input id="three-d">
+							</div>
 						</div>
 					</div>
-					<div id="i3" class="ui-state-default image-box">
+					<div id="i3" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>Auto-Actions</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -603,15 +426,18 @@
 							<h1 id="h4"></h1>
 						</div>
 						<div id="f4" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d4"></select><input id="id-submit-4" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="a-as">Auto-Actions: </label>
+								<input id="a-as">
+							</div>
 						</div>
 					</div>
-					<div id="i4" class="ui-state-default image-box">
+					<div id="i4" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>Tools</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -620,15 +446,18 @@
 							<h1 id="h5"></h1>
 						</div>
 						<div id="f5" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d5"></select><input id="id-submit-5" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="tools">Tools: </label>
+								<input id="tools">
+							</div>
 						</div>
 					</div>
-					<div id="i5" class="ui-state-default image-box">
+					<div id="i5" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>Image Materials</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -637,15 +466,18 @@
 							<h1 id="h6"></h1>
 						</div>
 						<div id="f6" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d6"></select><input id="id-submit-6" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="img-mat">Image Materials: </label>
+								<input id="img-mat">
+							</div>
 						</div>
 					</div>
-					<div id="i6" class="ui-state-default image-box">
+					<div id="i6" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 			<h3>Layers</h3>
 			<div>
 				<div class="img-lookup-2">
@@ -654,19 +486,22 @@
 							<h1 id="h7"></h1>
 						</div>
 						<div id="f7" class="form-holder">
-							<select class="drop-id ui-selectmenu-button ui-button ui-widget ui-controlgroup-item ui-selectmenu-button-closed ui-corner-left" id="d7"></select><input id="id-submit-7" class="ui-button ui-corner-all ui-widget" type="submit" />
+							<div class="ui-widget">
+								<label for="layers">Layers: </label>
+								<input id="layers">
+							</div>
 						</div>
 					</div>
-					<div id="i7" class="ui-state-default image-box">
+					<div id="i7" class="image-box">
 						<div class="image-box-inner"></div>
 					</div>
 				</div>
 			</div>
-
+	
 		</div>
-
+	
+	
 	</div>
-
 
 
 
