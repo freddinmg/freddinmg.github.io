@@ -94,12 +94,17 @@ hr.style-8:after {
 hr.style-9 {
     border-top: solid 2px black !important;
     border-bottom: double 3px black !important;
-    width: 3px;
+    border-left-width: 0;
+    border-right-width: 0;
+
+    height: 3px;
 }
 
 hr.style-10 {
     border-top: solid 2px black !important;
     border-bottom: double 3px black !important;
+    border-left-width: 0;
+    border-right-width: 0;
     height: 3px;
 }
 
