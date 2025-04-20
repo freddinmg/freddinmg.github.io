@@ -108,15 +108,15 @@ hr.style-10 {
     height: 3px;
 }
 
-hr.style-10:before {
+hr.style-10:after {
     content: "§" !important;
     display: inline-block! important;
-    position: relative !important;
-    top: -0.7em;
+    position: absolute !important;
+    left: 50%;
+    translate: 0 -15px;
     font-size: 1.5em;
     padding: 0 0.25em;
     background: white;
-    z-index: 5;
 }
 
 
