@@ -60,6 +60,15 @@ input, textarea, fieldset, legend, datalist, select, output, option, optgroup {
 
 #outer-links {
     border-top: 1px solid black;
+    display: inline-block;
+}
+
+h1 ~ #outer-links, h2 ~ #outer-links, h3 ~ #outer-links {
+    margin-top: -25px;
+}
+
+hr {
+    margin: 7px 0 7px 0;
 }
 
 
