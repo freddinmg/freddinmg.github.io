@@ -12,12 +12,14 @@
     align-content: center;
 }
 
+
 .image-box {
     margin-top: 10px;
     width: 300px;
     height: 300px;
-    border-width: 2px;
+    border: 2px solid #BEBEBE;
     border-radius: 3px;
+    background-color: #F5F5F5;
     display: flex;
     justify-content: center;
     align-items: center;
