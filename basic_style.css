@@ -108,7 +108,7 @@ hr.style-10 {
     height: 3px;
 }
 
-hr.style-10:after {
+hr.style-10:before {
     content: "§" !important;
     display: inline-block! important;
     position: relative !important;
@@ -116,6 +116,7 @@ hr.style-10:after {
     font-size: 1.5em;
     padding: 0 0.25em;
     background: white;
+    z-index: 5;
 }
 
 
