@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&display=swap');
+
+
 .little-table {
     width: 100%;
 }
@@ -29,6 +32,7 @@
     }
 
     .tag-box li {
+        font-family: "Unica One",'Huxley Titling','SF Movie Poster','Impact',sans-serif !important;
         border: 1px solid #696969;
         background-color: #E5E4E2;
         background: linear-gradient(to left, #A9A9A9, #E5E4E2);
