@@ -17,10 +17,8 @@ ul.nav li {
 }
 
 .cut-off {
-    border-width: 1px 0 1px 0;
-    border-color: #353535;
-    border-style: double solid solid solid;
-    border-width: 4px 0 1px 0;
+    border-width: 1px;
+    border-style: dashed;
 }
 
 ul.nav li:first-of-type {
@@ -75,7 +73,7 @@ ul.nav-2 li:first-child::marker {
     display: none;
 }
 
-ul.nav a, ul.nav-2 a, #outer-links a {
+ul.nav a, ul.nav-2 a, #outer-links {
     color: mediumpurple;
 }
 
