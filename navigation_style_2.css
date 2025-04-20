@@ -1,0 +1,147 @@
+body {
+    font-family: 'Century Gothic',Verdana,Arial,sans-serif;
+}
+
+ul.nav {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+    ul.nav li {
+        display: flex;
+        margin: 10px;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-width: 0 2px;
+        border-style: dotted;
+        border-color: white silver;
+    }
+
+.cut-off {
+    border-width: 1px 0 1px 0;
+    border-color: #A9A9A9;
+    border-style: dashed;
+}
+
+ul.nav li:first-of-type {
+    border-width: 0 2px 0 0;
+}
+
+ul.nav li:last-of-type {
+    border-width: 0 0 0 2px;
+}
+
+ul.nav-2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+}
+
+.nav-2::marker {
+    list-style-type: circle;
+}
+
+ul.nav-2 li {
+    display: list-item;
+    list-style-position: inside;
+    margin: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-width: 0 2px;
+}
+
+.front-nav .nav-2 li {
+    list-style-position: outside;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+ul.nav-2 li::marker {
+    color: #A9A9A9;
+}
+
+.nav-2 li:first-of-type::marker, .nav-2 li:last-of-type::marker {
+    content: "" !important;
+    display: none;
+}
+
+ul.nav a, ul.nav-2 a, .nav-button {
+    color: mediumpurple;
+}
+
+.front-nav .nav-2 li {
+    padding: 15px;
+}
+
+.front-nav {
+    font-family: "Chelsea Market", "Bauhaus 93", "Futura","Arial Black", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.4em;
+}
+
+h1 ~ .cut-off, h2 ~ .cut-off, h3 ~ .cut-off {
+    margin-top: -25px;
+}
+
+.nav-list, #nav-list {
+    display: inline-block;
+    align-self: flex-start;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 200px;
+    margin: 0;
+}
+
+.nav-button {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.nav-close-button {
+    text-align: center;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* top | right | bottom | left */
+ul.nav-links {
+    display: none;
+    align-self: flex-start;
+    list-style-type: none;
+    padding: 6px 3px 3px 0;
+    margin-bottom: 3px;
+    position: absolute;
+    backdrop-filter: blur(7px);
+    top: 55px;
+}
+
+.nav-links li {
+    border-bottom: 1px solid gray;
+    display: flex;
+    align-items: flex-start;
+    flex-grow: 2;
+    flex-wrap: nowrap;
+}
+
+details ul {
+    padding: 6px 3px 3px 0;
+    backdrop-filter: blur(7px);
+}
+
+details ul li::marker {
+    list-style: none !important;
+    display: none !important;
+    content: "" !important;
+}
+
+.nav details, .nav-2 details {
+    display: inline-block;
+}

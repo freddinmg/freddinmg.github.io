@@ -4,7 +4,7 @@
 <head>
     <link rel="icon" type="image/x-icon" href="https://fred-site.neocities.org/fav_icon/feather_favicon96x96.ico">
     <link href="basic_style.css" rel="stylesheet" type="text/css" media="all">
-    <link href="navigation_style.css" rel="stylesheet" type="text/css" media="all">
+    <link href="navigation_style_2.css" rel="stylesheet" type="text/css" media="all">
     <meta charset="utf-8" />
     <title>Asset Notes</title>
     <script src="https://cdn.jsdelivr.net/npm/pace-js@latest/pace.min.js"></script>
@@ -43,10 +43,53 @@
 </head>
 <body>
     <ul class="nav-2">
-        <li><a href="brushes_table.html">CSP Brushes</a></li>
-        <li><a href="3D_table.html">CSP 3D Assets</a></li>
+        <li><a href="asset_notes.html">Asset Notes</a></li>
         <li><a href="index.html">Home</a></li>
+        <li><a href="material_catalogs_info.html">Material Catalogs (Information)</a></li>
+        <li><a href="material_catalogs_images.html">Material Catalogs (Thumbnails)</a></li>
+		<li>
+			<div id="nav-list">
+				<span class="nav-button">Individual Tables</span>
+				<ul class="nav-links ui-front">
+					<li><a href="brushes_table.html">Favorite Brushes</a></li>
+					<li><a href="3D_table.html">Favorite 3D</a></li>
+					<li><a href="image-materials_table.html">Favorite Image Materials</a></li>
+					<li><a href="auto-action_table.html">Favorite Auto-Actions</a></li>
+					<li><a href="tools_table.html">Favorite Tools</a></li>
+					<li><a href="gradients_table.html">Favorite Gradients</a></li>
+					<li><a href="layers_table.html">Favorite Layers</a></li>
+					<li><span class="nav-close-button">[ <em>Close Menu</em> ]</span></li>
+				</ul>
+			</div>
+		</li>
     </ul>
+
+
+    <hr />
+
+	<noscript>
+		<ul class="nav-2">
+			<li><a href="asset_notes.html">Asset Notes</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="material_catalogs_info.html">Material Catalogs (Information)</a></li>
+			<li><a href="material_catalogs_images.html">Material Catalogs (Thumbnails)</a></li>
+			<li>
+				<details>
+					<summary>Individual Tables</summary>
+					<ul>
+						<li><a href="brushes_table.html">Favorite Brushes</a></li>
+						<li><a href="3D_table.html">Favorite 3D</a></li>
+						<li><a href="image-materials_table.html">Favorite Image Materials</a></li>
+						<li><a href="auto-action_table.html">Favorite Auto-Actions</a></li>
+						<li><a href="tools_table.html">Favorite Tools</a></li>
+						<li><a href="gradients_table.html">Favorite Gradients</a></li>
+						<li><a href="layers_table.html">Favorite Layers</a></li>
+					</ul>
+				</details>
+			</li>
+		</ul>
+	</noscript>
+
     <table id="csp-notes" class="stripe"></table>    
 </body>
 
