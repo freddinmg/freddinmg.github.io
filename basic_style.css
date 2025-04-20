@@ -94,5 +94,22 @@ hr.style-8:after {
 hr.style-9 {
     border-top: solid 2px black !important;
     border-bottom: double 3px black !important;
+    width: 3px;
+}
+
+hr.style-10 {
+    border-top: solid 2px black !important;
+    border-bottom: double 3px black !important;
+    width: 3px;
+}
+
+hr.style-10:after {
+    content: "&#xAA5C;" !important;
+    display: inline-block! important;
+    position: relative !important;
+    top: -0.7em;
+    font-size: 1.5em;
+    padding: 0 0.25em;
+    background: white;
 }
 
