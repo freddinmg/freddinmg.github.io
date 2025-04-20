@@ -54,5 +54,12 @@ input, textarea, fieldset, legend, datalist, select, output, option, optgroup {
     font-style: normal;
 }
 
+.bigger {
+    font-size: 1.3em;
+}
+
+#outer-links {
+    border-top: 1px solid black;
+}
 
 
