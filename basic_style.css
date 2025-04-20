@@ -131,7 +131,7 @@ hr.style-10:after {
     position: absolute !important;
     left: 50%;
     translate: 0 -1em;
-    font-size: 1.25em;
+    font-size: 0.85em;
     padding: 0 0.75em;
     background: black;
 }
