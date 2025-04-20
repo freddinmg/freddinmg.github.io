@@ -364,7 +364,6 @@
                     });
                 })
 
-            //DEADASS, render wasn't working until I changed single quotes to double quotes and vice versa.
 
 
 
@@ -372,33 +371,7 @@
         });
 
     </script>
-    <script>
-        function wrapTextWithSpan(element, regex, className) {
-            element.html(function (index, oldHTML) {
-                return oldHTML.replace(regex, function (matched) {
-                    return '<span class="' + className + '">' + matched + '</span>';
-                });
-            });
-        }
 
-        // Example usage:
-
-        var myRegex = /\[(.*?)\]/g;
-        var tagRowText = $("#myTable tr td:nth-child(5)").text();
-
-        var text = $("#myTable tr td:nth-child(4)");
-        var text2 = text.text();
-
-        var myClass1 = $("#tag-holder");
-        var myClass2 = 'tag';
-
-        //var text3 = "Does this work?";
-        $("#myTable tr td:nth-child(4)").first().wrapInner("<div id='tag-holder'></div>");
-
-        wrapTextWithSpan(myClass1, myRegex, myClass2);
-
-        //if (text2.match(myRegex) != false) { text.wrapInner("<span class='tag'></span>") };
-    </script>
 </head>
 <body>
     <ul class="nav-2">
