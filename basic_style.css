@@ -72,7 +72,7 @@ hr {
 }
 
 /* https://css-tricks.com/examples/hrs/ */
-hr.style-eight {
+hr.style-8 {
     overflow: visible; /* For IE */
     padding: 0;
     border: none;
@@ -81,7 +81,7 @@ hr.style-eight {
     text-align: center;
 }
 
-hr.style-eight:after {
+hr.style-8:after {
     content: "§" !important;
     display: inline-block! important;
     position: relative !important;
@@ -91,7 +91,7 @@ hr.style-eight:after {
     background: white;
 }
 
-hr.style-nine {
+hr.style-9 {
     border-top: solid 2px black !important;
     border-bottom: double 3px black !important;
 }
