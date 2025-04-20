@@ -70,7 +70,7 @@ ul.nav-2 li::marker {
     display: none;
 }
 
-ul.nav a, ul.nav-2 a, .nav-button {
+ul.nav a, ul.nav-2 a, .nav-button, #outer-links a {
     color: mediumpurple;
 }
 
