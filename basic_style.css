@@ -63,8 +63,13 @@ input, textarea, fieldset, legend, datalist, select, output, option, optgroup {
     display: inline-block;
 }
 
+#outer-links ul::marker {
+    content: "꩜";
+    font-size: 1.2em;
+}
+
 h1 ~ #outer-links, h2 ~ #outer-links, h3 ~ #outer-links {
-    margin-top: -25px;
+    margin-top: -23px;
 }
 
 hr {
