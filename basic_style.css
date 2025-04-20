@@ -3,7 +3,7 @@ body {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif
 }
 
-.dataTable, .ui-tabs-anchor, .dt-length label, .dt-info, .dt-paging-button {
+.dataTable, .ui-tabs-anchor, .dt-length label, .dt-info, .dt-paging-button, .dt-search label {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
