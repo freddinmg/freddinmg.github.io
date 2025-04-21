@@ -73,7 +73,7 @@ ul.nav-2 li:first-child::marker {
     display: none;
 }
 
-ul.nav a, ul.nav-2 a, #outer-links {
+ul.nav a, ul.nav-2 a, #outer-links a {
     color: mediumpurple;
 }
 
