@@ -110,6 +110,10 @@ table.dataTable > thead > tr > th, table.dataTable > thead > tr > td {
     text-shadow: 1px 1px 2px indigo;
 }
 
+table.dataTable > tbody > tr.child ul.dtr-details > li {
+    border-bottom-color: #6963BB;
+}
+
 table.dataTable.row-border > tbody > tr > *, table.dataTable.display > tbody > tr > * {
     border-top: 1px solid #211668 !important;
 }
