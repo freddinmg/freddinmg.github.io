@@ -1,7 +1,7 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=Cookie&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Send+Flowers&family=Sono:wght@200..800&display=swap');
 
 body {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif
@@ -29,11 +29,11 @@ h1.fancy {
 }
 
 .fancy-initial {
-    font-family: "Cookie", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
+    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
 }
 
 .stamp .fancy-initial, .fancy-initial .stamp {
-    font-family: "Cookie", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
+    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
 }
 
 
