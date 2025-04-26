@@ -11,9 +11,15 @@ body {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif !important;
 }
 
+.ui-widget-content span.stamp.fancy-initial {
+    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
+}
+
 .ui-widget-content .stamp {
     font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
 }
+
+
 
 h1, h2, h3, .tab-button, .r-tabs-accordion-title.r-tabs-state-active {
     font-family: "Chelsea Market", "Bauhaus 93", "Futura","Arial Black", sans-serif;
@@ -32,9 +38,7 @@ h1.fancy {
     font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
 }
 
-.ui-widget-content span.stamp.fancy-initial {
-    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
-}
+
 
 .fancy-title {
     font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
@@ -158,3 +162,6 @@ hr.style-10:after {
 }
 
 
+.ui-widget-content .stamp .fancy-initial {
+    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
+}
