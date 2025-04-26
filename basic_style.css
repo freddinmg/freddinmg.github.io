@@ -32,10 +32,9 @@ h1.fancy {
     font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
 }
 
-.stamp .fancy-initial, .fancy-initial .stamp {
+.ui-widget-content span.stamp.fancy-initial {
     font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
 }
-
 
 .fancy-title {
     font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
