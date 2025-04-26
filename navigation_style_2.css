@@ -65,7 +65,7 @@ ul.nav-2 li::marker {
     color: #A9A9A9;
 }
 
-.nav-2 li:first-of-type::marker, .nav-2 li:last-of-type::marker, .nav-2:nth-last-of-type(2)::marker {
+.nav-2 li:first-of-type::marker, .nav-2 li:last-of-type::marker, .nav-2 li:nth-last-of-type(2)::marker {
     content: "" !important;
     display: none;
 }
