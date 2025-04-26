@@ -15,7 +15,7 @@ body {
     font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
 }
 
-.ui-widget-content .stamp {
+.ui-widget-content span.stamp:not(.fancy-initial) {
     font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
 }
 
