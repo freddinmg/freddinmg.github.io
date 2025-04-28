@@ -12,11 +12,11 @@ body {
 }
 
 .ui-widget-content span.stamp.fancy-initial {
-    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
+    font-family: "Send Flowers", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive !important;
 }
 
 .ui-widget-content span.stamp:not(.fancy-initial) {
-    font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive !important;
+    font-family: "Imperial Script", 'Edwardian Script ITC',"SavoyeLETPlain", "Brush Script MT", cursive !important;
 }
 
 
@@ -28,20 +28,20 @@ h1, h2, h3, .tab-button, .r-tabs-accordion-title.r-tabs-state-active {
 }
 
 h1.fancy {
-    font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
+    font-family: "Imperial Script", 'Edwardian Script ITC',"SavoyeLETPlain", "Brush Script MT", cursive;
     font-weight: 400;
     font-style: normal;
     font-size: 2.5em;
 }
 
 .fancy-initial {
-    font-family: "Send Flowers", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
+    font-family: "Send Flowers", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive;
 }
 
 
 
 .fancy-title {
-    font-family: "Imperial Script", 'Edwardian Script ITC',"Savoye LET", "Brush Script MT", cursive;
+    font-family: "Imperial Script", 'Edwardian Script ITC',"SavoyeLETPlain", "Brush Script MT", cursive;
     font-weight: 400;
     font-style: normal;    
 }
@@ -51,7 +51,7 @@ h1.fancy-title {
 }
 
 .imperial-script-regular {
-    font-family: "Imperial Script", 'Edwardian Script ITC', "Savoye LET", "Brush Script MT", cursive;
+    font-family: "Imperial Script", 'Edwardian Script ITC', "SavoyeLETPlain", "Brush Script MT", cursive;
     font-weight: 400;
     font-style: normal;
 }
