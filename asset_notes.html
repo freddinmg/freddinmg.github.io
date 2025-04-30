@@ -92,12 +92,12 @@
                 rowCallback: function (row, data) {
                     if (data.URLs !== "") {
 
-						for (i = 0; i < wordsArr.length; i++) {
+						for (i = 0; i < wordArr.length; i++) {
 
 							$("td:eq(3)", row).linkIt({
 								link: {
-									word: wordsArr[i],
-									url: linksArr[i],
+									word: wordArr[i],
+									url: linkArr[i],
 								},
 								linkColor: "purple",
 								newWindow: true,
