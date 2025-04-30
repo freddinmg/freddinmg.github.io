@@ -94,18 +94,18 @@
                         //console.log(wordArr);
                         //console.log(linkArr);
 
-						//for (i = 0; i < wordArr.length; i++) {
+						for (i = 0; i < wordArr.length; i++) {
 
                             $("td:eq(3)", row).linkIt({
                                 link: {
-                                word: data.Links,
-                                url: data.URLs
+                                word: wordArr[i],
+                                url: linkArr[i],
                                  },
                             linkColor:"green",
 					        newWindow: true,
                             });
 
-					//	};
+						};
                     };
 
 
