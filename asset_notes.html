@@ -57,7 +57,7 @@
                                         var split3 = split2.map(x => x.replace(']', ''));
 										var split4 = split3.map(x => x.trim());
 										wordArr = split4;
-										console.log(wordsArr);
+										//console.log(wordsArr);
                                         var listHTML = "<ul>";
                                         for (let i = 0; i < split3.length; i++) {
                                             listHTML += "<li>" + split3[i] + "</li>";
@@ -78,7 +78,7 @@
                                         var split3 = split2.map(x => x.replace(']', ''));
 										var split4 = split3.map(x => x.trim());
 										linkArr = split4;
-										console.log(linkArr);
+										//console.log(linkArr);
                                         var listHTML = "<ul>";
                                         for (let i = 0; i < split3.length; i++) {
                                             listHTML += "<li>" + split3[i] + "</li>";
@@ -91,7 +91,8 @@
                 ],
                 rowCallback: function (row, data) {
                     if (data.URLs !== "") {
-
+                        console.log(wordArr);
+                        console.log(linkArr);
 						for (i = 0; i < wordArr.length; i++) {
 
 							$("td:eq(3)", row).linkIt({
