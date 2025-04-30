@@ -47,27 +47,6 @@
                     { title: 'Asset Name', data: 'Title' },
                     { title: 'Description/Things to Note',data: 'Description / Things to Note' },
                     { title: 'URLs', data:'URLs',  render: function (data) {
-                                        var wordsPlain = data;
-
-                                        var split1 = wordsPlain.split('[');
-                                        var split2 = split1.filter(function (e) {
-                                            return e; // Returns only the truthy values
-                                        });
-
-                                        var split3 = split2.map(x => x.replace(']', ''));
-										var split4 = split3.map(x => x.trim());
-										wordArr = split4;
-										//console.log(wordsArr);
-                                        var listHTML = "<ul>";
-                                        for (let i = 0; i < split3.length; i++) {
-                                            listHTML += "<li>" + split3[i] + "</li>";
-                                        }
-                                        listHTML += "</ul>";
-
-                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
-                                    }
-                                },
-                    {title: 'Link Words', data:"Links",  render: function (data) {
                                         var linksPlain = data;
 
                                         var split1 = linksPlain.split('[');
@@ -77,8 +56,29 @@
 
                                         var split3 = split2.map(x => x.replace(']', ''));
 										var split4 = split3.map(x => x.trim());
-										linkArr = split4;
+										wordArr = split4;
 										//console.log(linkArr);
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                    {title: 'Words', data:"Words",  render: function (data) {
+                                        var wordsPlain = data;
+
+                                        var split1 = wordsPlain.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+										var split4 = split3.map(x => x.trim());
+										linkArr = split4;
+										//console.log(wordArr);
                                         var listHTML = "<ul>";
                                         for (let i = 0; i < split3.length; i++) {
                                             listHTML += "<li>" + split3[i] + "</li>";
