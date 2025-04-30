@@ -94,14 +94,14 @@
                         //console.log(wordArr);
                         //console.log(linkArr);
 
-						for (i = 0; i < wordArr.length; i++) {
+						for (i = 0; i < linkArr.length; i++) {
 
                             $("td:eq(3)", row).linkIt({
                                 link: {
                                 word: wordArr[i],
                                 url: linkArr[i],
                                  },
-                            linkColor:"green",
+                            linkColor:"red",
 					        newWindow: true,
                             });
 
