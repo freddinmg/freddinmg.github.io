@@ -91,12 +91,12 @@
                 ],
                 rowCallback: function (row, data) {
                     if (linkArr != false) {
-                        console.log(linkArr != false);
+                        //console.log(linkArr != false);
                         console.log(wordArr);
                         console.log(linkArr);
 
 						for (var i = 0; i < linkArr.length; i++) {
-
+                            console.log(linkArr != false);
                             $("td:eq(3)", row).linkIt({
                                 link: {
                                 word: wordArr[i],
