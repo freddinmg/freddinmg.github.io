@@ -23,6 +23,10 @@
     <script src="https://cdn.datatables.net/v/dt/moment-2.29.4/dt-2.2.2/b-3.2.2/b-colvis-3.2.2/fc-5.0.4/fh-4.0.1/kt-2.12.1/r-3.0.4/rg-1.5.1/sc-2.4.3/sb-1.8.2/sp-2.3.3/sl-3.0.0/sr-1.4.1/datatables.min.js" integrity="sha384-LQWPqHdpWrz0yv8XxKAKXqna9vn7khAd1lX3cY69VbxkwpdfL0kPnsDJS0BX8Nh/" crossorigin="anonymous"></script>
 
     <script>
+		var wordArr = [];
+		var linkArr = [];
+    </script>
+    <script>
         		var ajax1 = 'https://script.googleusercontent.com/macros/echo?user_content_key=XwtGDreWbm9xx2xQrdm601JnYsc7e5QGm0rsfmwl_sKnJiXAbJKtWT8LzsTU0pzfq9yn6LprMVpRKy89rF8-9Vy4zpyU0LBsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEjsnU-Mm8cwRUJlhhqInK6Z-k5qQn6IhbaawRgoZZTpW_rtR4uziw4vZZmlbfcBX7peojJMrsYrnyE205yidrI8MJSlXGPflA&lib=M-XwehQPxel2XLBOR7_obQKWZ8rqdjnSl';
         $(document).ready(function () {
             new DataTable('#csp-notes', {
@@ -42,17 +46,64 @@
 },
                     { title: 'Asset Name', data: 'Title' },
                     { title: 'Description/Things to Note',data: 'Description / Things to Note' },
+                    { title: 'URLs', data:'URLs',  render: function (data) {
+                                        var wordsPlain = data;
+
+                                        var split1 = wordsPlain.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+										var split4 = split3.map(x => x.trim());
+										wordsArr = split4;
+										//console.log(wordsArr);
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
+                    {title: 'Link Words', data:"Links",  render: function (data) {
+                                        var wordsPlain = data;
+
+                                        var split1 = wordsPlain.split('[');
+                                        var split2 = split1.filter(function (e) {
+                                            return e; // Returns only the truthy values
+                                        });
+
+                                        var split3 = split2.map(x => x.replace(']', ''));
+										var split4 = split3.map(x => x.trim());
+										wordsArr = split4;
+										//console.log(wordsArr);
+                                        var listHTML = "<ul>";
+                                        for (let i = 0; i < split3.length; i++) {
+                                            listHTML += "<li>" + split3[i] + "</li>";
+                                        }
+                                        listHTML += "</ul>";
+
+                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
+                                    }
+                                },
                 ],
                 rowCallback: function (row, data) {
                     if (data.URLs !== "") {
-                        $("td:eq(3)", row).linkIt({
-                           link: {
-                                word: data.Links,
-                                url: data.URLs
-                            },
-                            linkColor:"purple",
-							newWindow: true,
-                        })
+
+						for (i = 0; i < wordsArr.length; i++) {
+
+							$("td:eq(3)", row).linkIt({
+								link: {
+									word: Links[i],
+									url: URLs[i],
+								},
+								linkColor: "purple",
+								newWindow: true,
+							})
+
+						}
                     }
 
 
