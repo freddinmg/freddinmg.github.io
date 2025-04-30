@@ -91,21 +91,21 @@
                 ],
                 rowCallback: function (row, data) {
                     if (data.URLs !== "") {
-                        console.log(wordArr);
-                        console.log(linkArr);
+                        //console.log(wordArr);
+                        //console.log(linkArr);
 
-						for (i = 0; i < wordArr.length; i++) {
+						//for (i = 0; i < wordArr.length; i++) {
 
-							$("td:eq(3)", row).linkIt({
-								link: {
-									word: wordArr[i],
-									url: linkArr[i],
-								},
-								linkColor: "purple",
-								newWindow: true,
-							});
+                            $("td:eq(3)", row).linkIt({
+                                link: {
+                                word: data.Links,
+                                url: data.URLs
+                                 },
+                            linkColor:"purple",
+					        newWindow: true,
+                            });
 
-						};
+					//	};
                     };
 
 
