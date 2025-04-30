@@ -57,7 +57,7 @@
                                         var split3 = split2.map(x => x.replace(']', ''));
 										var split4 = split3.map(x => x.trim());
 										wordsArr = split4;
-										//console.log(wordsArr);
+										console.log(wordsArr);
                                         var listHTML = "<ul>";
                                         for (let i = 0; i < split3.length; i++) {
                                             listHTML += "<li>" + split3[i] + "</li>";
@@ -68,17 +68,17 @@
                                     }
                                 },
                     {title: 'Link Words', data:"Links",  render: function (data) {
-                                        var wordsPlain = data;
+                                        var linksPlain = data;
 
-                                        var split1 = wordsPlain.split('[');
+                                        var split1 = linksPlain.split('[');
                                         var split2 = split1.filter(function (e) {
                                             return e; // Returns only the truthy values
                                         });
 
                                         var split3 = split2.map(x => x.replace(']', ''));
 										var split4 = split3.map(x => x.trim());
-										wordsArr = split4;
-										//console.log(wordsArr);
+										linkArr = split4;
+										console.log(linkArr);
                                         var listHTML = "<ul>";
                                         for (let i = 0; i < split3.length; i++) {
                                             listHTML += "<li>" + split3[i] + "</li>";
