@@ -25,6 +25,8 @@
     <script>
 		var wordArr = [];
 		var linkArr = [];
+        var liquidWords;
+		var liquidLinks;
     </script>
     <script>
         		var ajax1 = 'https://script.googleusercontent.com/macros/echo?user_content_key=XwtGDreWbm9xx2xQrdm601JnYsc7e5QGm0rsfmwl_sKnJiXAbJKtWT8LzsTU0pzfq9yn6LprMVpRKy89rF8-9Vy4zpyU0LBsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEjsnU-Mm8cwRUJlhhqInK6Z-k5qQn6IhbaawRgoZZTpW_rtR4uziw4vZZmlbfcBX7peojJMrsYrnyE205yidrI8MJSlXGPflA&lib=M-XwehQPxel2XLBOR7_obQKWZ8rqdjnSl';
@@ -107,20 +109,49 @@
                             });
 
 						};
-                        $(document).on('click', 'button', function(){
-                            for (var i = 0; i < linkArr.length; i++) {
-                            console.log(linkArr != false);
-                            $("td:eq(3)", row).linkIt({
-                                link: {
-                                    word: wordArr[i],
-                                    url: linkArr[i],
-                                 },
-                                linkColor:"red",
-					            newWindow: true
-                            });
 
-						};
-                        })
+						table.on('draw', function () {							
+							var linksPlain = data.URLs;
+
+							var split1 = linksPlain.split('[');
+							var split2 = split1.filter(function (e) {
+								return e; // Returns only the truthy values
+							});
+
+							var split3 = split2.map(x => x.replace(']', ''));
+							var split4 = split3.map(x => x.trim());
+							liquidLinks = split4;
+							//-----------------------------------
+							var wordsPlain = data.Links;
+
+							var split1 = wordsPlain.split('[');
+							var split2 = split1.filter(function (e) {
+								return e; // Returns only the truthy values
+							});
+
+							var split3 = split2.map(x => x.replace(']', ''));
+							var split4 = split3.map(x => x.trim());
+							liquidWords = split4;
+
+							if ($("td:eq(4)", row) != "" || false) {
+
+								for (k = 0; k < liquidWords.length; k++) {
+									console.log(liquidWords);
+									console.log(liquidLinks);
+									$("td:eq(3)", row).linkIt({
+										link: {
+											word: liquidWords[k],
+											url: liquidLinks[k],
+										},
+										linkColor: "purple",
+										newWindow: true,
+									})
+
+								};
+							}
+
+						})
+
                     };
 
 
