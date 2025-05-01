@@ -1,7 +1,7 @@
 
 /* @import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&display=swap'); */
 
-@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Send+Flowers&family=Sono:wght@200..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Chelsea+Market&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Imperial+Script&family=Sono:wght@200..800&family=Style+Script&display=swap');
 
 body {
     font-family: "Century Gothic","Optima", Verdana, Geneva, Tahoma, sans-serif
@@ -35,7 +35,7 @@ h1.fancy {
 }
 
 .fancy-initial {
-    font-family: "Send Flowers", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive;
+    font-family: "Style Script", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive;
 }
 
 
