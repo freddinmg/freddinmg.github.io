@@ -12,7 +12,7 @@ body {
 }
 
 .ui-widget-content span.stamp.fancy-initial {
-    font-family: "Send Flowers", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive !important;
+    font-family: "Style Script", 'French Script MT',"Bradley Hand", "Brush Script MT", cursive !important;
 }
 
 .ui-widget-content span.stamp:not(.fancy-initial) {
