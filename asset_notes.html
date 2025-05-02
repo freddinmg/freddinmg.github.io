@@ -124,25 +124,25 @@
 						table.on('draw', function () {							
 							var linksPlain2 = data.URLs;
 
-							var split1 = linksPlain2.split('[');
-							var split2 = split1.filter(function (e) {
+							var split1A = linksPlain2.split('[');
+							var split2A = split1.filter(function (e) {
 								return e; // Returns only the truthy values
 							});
 
-							var split3 = split2.map(x => x.replace(']', ''));
-							var split4 = split3.map(x => x.trim());
-							liquidLinks = split4;
+							var split3A = split2A.map(x => x.replace(']', ''));
+							var split4A = split3A.map(x => x.trim());
+							liquidLinks = split4A;
 							//-----------------------------------
 							var wordsPlain2 = data.Links;
 
-							var split1 = wordsPlain2.split('[');
-							var split2 = split1.filter(function (e) {
+							var split1B = wordsPlain2.split('[');
+							var split2B = split1B.filter(function (e) {
 								return e; // Returns only the truthy values
 							});
 
-							var split3 = split2.map(x => x.replace(']', ''));
-							var split4 = split3.map(x => x.trim());
-							liquidWords = split4;
+							var split3B = split2B.map(x => x.replace(']', ''));
+							var split4B = split3B.map(x => x.trim());
+							liquidWords = split4B;
 
 							if (data.URLs != "" || false) {
 
