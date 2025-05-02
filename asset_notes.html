@@ -25,152 +25,161 @@
     <script>
 		var wordArr = [];
 		var linkArr = [];
-        var liquidWords;
+
+		var liquidWords;
 		var liquidLinks;
         var linkColor = "mediumpurple";
     </script>
     <script>
         		var ajax1 = 'https://script.googleusercontent.com/macros/echo?user_content_key=XwtGDreWbm9xx2xQrdm601JnYsc7e5QGm0rsfmwl_sKnJiXAbJKtWT8LzsTU0pzfq9yn6LprMVpRKy89rF8-9Vy4zpyU0LBsm5_BxDlH2jW0nuo2oDemN9CCS2h10ox_1xSncGQajx_ryfhECjZEnEjsnU-Mm8cwRUJlhhqInK6Z-k5qQn6IhbaawRgoZZTpW_rtR4uziw4vZZmlbfcBX7peojJMrsYrnyE205yidrI8MJSlXGPflA&lib=M-XwehQPxel2XLBOR7_obQKWZ8rqdjnSl';
-        $(document).ready(function () {
-        var table = new DataTable('#csp-notes', {
-                ajax: ajax1,
-                fixedColumns: {
-                    start: 3,
-                },
-                scrollX: true,
-                fixedHeader: true,
-                scrollCollapse: true,
-                columnDefs: [
-					{
-						target: 4,
-						visible: true
-					},
-					{
-						target: 5,
-						visible: true
+                $(document).ready(function () {
+	var linkColor = "mediumpurple";
+	var table = new DataTable('#csp-notes', {
+		ajax: ajax1,
+		fixedColumns: {
+			start: 3,
+		},
+		scrollX: true,
+		fixedHeader: true,
+		scrollCollapse: true,
+		columnDefs: [
+			{
+				target: 4,
+				visible: false
+			},
+			{
+				target: 5,
+				visible: false
+			}
+		],
+		columns: [
+			{ title: 'Page', data: 'Page' },
+			{
+				title: 'Asset Num', data: 'Asset #', render: function (data) {
+					if (typeof data === "number") { return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>" } else { return data }
+				}
+			},
+			{ title: 'Asset Name', data: 'Title' },
+			{ title: 'Description/Things to Note', data: 'Description / Things to Note' },
+			{
+				title: 'URLs', data: 'URLs', render: function (data) {
+					var linksPlain = data;
+
+					var split1 = linksPlain.split('[');
+					var split2 = split1.filter(function (e) {
+						return e; // Returns only the truthy values
+					});
+
+					var split3 = split2.map(x => x.replace(']', ''));
+					var split4 = split3.map(x => x.trim());
+					linkArr = split4;
+					//var linkArr2 = split4;
+					var linkArr2 = "hello, linkArr2 here!";
+					//console.log(linkArr);
+					var listHTML = "<ul>";
+					for (let i = 0; i < split3.length; i++) {
+						listHTML += "<li>" + split3[i] + "</li>";
 					}
-				],
-                columns: [
-                    { title:'Page', data: 'Page' },
-					{
-						title: 'Asset Num', data: 'Asset #', render: function (data) {
-							if(typeof data === "number"){return "<a href='https://assets.clip-studio.com/en-us/search?word=" + data + "&order=new' target = '_blank'>" + data + "</a>"} else {return data}
-						}
-},
-                    { title: 'Asset Name', data: 'Title' },
-                    { title: 'Description/Things to Note',data: 'Description / Things to Note' },
-                    { title: 'URLs', data:'URLs',  render: function (data) {
-                                        var linksPlain = data;
+					listHTML += "</ul>";
 
-                                        var split1 = linksPlain.split('[');
-                                        var split2 = split1.filter(function (e) {
-                                            return e; // Returns only the truthy values
-                                        });
+					return "<div class = 'tag-box'>" + listHTML + "</div>";
+				}
+			},
+			{
+				title: 'Words', data: "Links", render: function (data) {
+					var wordsPlain = data;
+					
+					var split1 = wordsPlain.split('[');
+					var split2 = split1.filter(function (e) {
+						return e; // Returns only the truthy values
+					});
 
-                                        var split3 = split2.map(x => x.replace(']', ''));
-										var split4 = split3.map(x => x.trim());
-										linkArr = split4;
-										//console.log(linkArr);
-                                        var listHTML = "<ul>";
-                                        for (let i = 0; i < split3.length; i++) {
-                                            listHTML += "<li>" + split3[i] + "</li>";
-                                        }
-                                        listHTML += "</ul>";
+					var split3 = split2.map(x => x.replace(']', ''));
+					var split4 = split3.map(x => x.trim());
+					wordArr = split4;
+					//var wordArr2 = split4;
+					//console.log(wordArr);
+					var listHTML = "<ul>";
+					for (let i = 0; i < split3.length; i++) {
+						listHTML += "<li>" + split3[i] + "</li>";
+					}
+					listHTML += "</ul>";
 
-                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
-                                    }
-                                },
-                    {title: 'Words', data:"Links",  render: function (data) {
-                                        var wordsPlain = data;
+					return "<div class = 'tag-box'>" + listHTML + "</div>";
+				}
+			},
+		],
+		rowCallback: function (row, data) {
+			if (linkArr != false) {
+				//console.log(wordArr);
+				//console.log(linkArr);
+				for (i = 0; i < wordArr.length; i++) {
 
-                                        var split1 = wordsPlain.split('[');
-                                        var split2 = split1.filter(function (e) {
-                                            return e; // Returns only the truthy values
-                                        });
+					$("td:eq(3)", row).linkIt({
+						link: {
+							word: wordArr[i],
+							url: linkArr[i],
+						},
+						linkColor: "linkColor",
+						newWindow: true,
+					})
 
-                                        var split3 = split2.map(x => x.replace(']', ''));
-										var split4 = split3.map(x => x.trim());
-										wordArr = split4;
-										//console.log(wordArr);
-                                        var listHTML = "<ul>";
-                                        for (let i = 0; i < split3.length; i++) {
-                                            listHTML += "<li>" + split3[i] + "</li>";
-                                        }
-                                        listHTML += "</ul>";
+				};
 
-                                        return "<div class = 'tag-box'>" + listHTML + "</div>";
-                                    }
-                                },
-                ],
-                rowCallback: function (row, data) {
-                    if (linkArr != false) {
-                        //console.log(linkArr != false);
-                        console.log(wordArr);
-                        console.log(linkArr);
 
-						for (var i = 0; i < linkArr.length; i++) {
-                            console.log(linkArr != false);
-                            $("td:eq(3)", row).linkIt({
-                                link: {
-                                    word: wordArr[i],
-                                    url: linkArr[i],
-                                 },
-                                linkColor: linkColor,
-					            newWindow: true
-                            });
+
+				table.on('draw', function () {							
+					var linksPlain = data.URLs;
+
+					var split1 = linksPlain.split('[');
+					var split2 = split1.filter(function (e) {
+						return e; // Returns only the truthy values
+					});
+
+					var split3 = split2.map(x => x.replace(']', ''));
+					var split4 = split3.map(x => x.trim());
+					liquidLinks = split4;
+					//-----------------------------------
+					var wordsPlain = data.Links;
+
+					var split1 = wordsPlain.split('[');
+					var split2 = split1.filter(function (e) {
+						return e; // Returns only the truthy values
+					});
+
+					var split3 = split2.map(x => x.replace(']', ''));
+					var split4 = split3.map(x => x.trim());
+					liquidWords = split4;
+
+					if (data.URLs != "" || false) {
+
+						for (k = 0; k < liquidWords.length; k++) {
+							console.log(liquidWords);
+							console.log(liquidLinks);
+							$("td:eq(3)", row).linkIt({
+								link: {
+									word: liquidWords[k],
+									url: liquidLinks[k],
+								},
+								linkColor: linkColor,
+								newWindow: true,
+							})
 
 						};
+					}
 
-						table.on('draw', function () {							
-							var linksPlain2 = data.URLs;
+				})
 
-							var split1A = linksPlain2.split('[');
-							var split2A = split1.filter(function (e) {
-								return e; // Returns only the truthy values
-							});
 
-							var split3A = split2A.map(x => x.replace(']', ''));
-							var split4A = split3A.map(x => x.trim());
-							liquidLinks = split4A;
-							//-----------------------------------
-							var wordsPlain2 = data.Links;
-
-							var split1B = wordsPlain2.split('[');
-							var split2B = split1B.filter(function (e) {
-								return e; // Returns only the truthy values
-							});
-
-							var split3B = split2B.map(x => x.replace(']', ''));
-							var split4B = split3B.map(x => x.trim());
-							liquidWords = split4B;
-
-							if (data.URLs != "" || false) {
-
-								for (k = 0; k < liquidWords.length; k++) {
-									console.log(liquidWords);
-									console.log(liquidLinks);
-									$("td:eq(3)", row).linkIt({
-										link: {
-											word: liquidWords[k],
-											url: liquidLinks[k],
-										},
-										linkColor: linkColor,
-										newWindow: true,
-									})
-
-								};
-							}
-
-						})
-
-                    };
+			}
 
 
 
 
-                }
-            });
-        });
+		}
+	});
+	
+});
 
     </script>
 <style>
