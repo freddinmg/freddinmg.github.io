@@ -122,9 +122,9 @@
 						};
 
 						table.on('draw', function () {							
-							var linksPlain = data.URLs;
+							var linksPlain2 = data.URLs;
 
-							var split1 = linksPlain.split('[');
+							var split1 = linksPlain2.split('[');
 							var split2 = split1.filter(function (e) {
 								return e; // Returns only the truthy values
 							});
@@ -133,9 +133,9 @@
 							var split4 = split3.map(x => x.trim());
 							liquidLinks = split4;
 							//-----------------------------------
-							var wordsPlain = data.Links;
+							var wordsPlain2 = data.Links;
 
-							var split1 = wordsPlain.split('[');
+							var split1 = wordsPlain2.split('[');
 							var split2 = split1.filter(function (e) {
 								return e; // Returns only the truthy values
 							});
